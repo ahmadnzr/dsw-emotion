@@ -5,8 +5,9 @@
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
-    "generate:component": "turbo gen react-component"
+    "lint": "eslint . --no-cache",
+    "generate:atom": "turbo gen atom",
+    "generate:molecules": "turbo gen molecules"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.12",
