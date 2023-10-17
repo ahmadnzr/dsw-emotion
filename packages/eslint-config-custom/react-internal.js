@@ -35,5 +35,21 @@ module.exports = {
 
   rules: {
     // add specific rules configurations here
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        namedComponents: "arrow-function",
+      },
+    ],
+    "unicorn/filename-case": [
+      "error",
+      {
+        cases: {
+          pascalCase: true,
+          camelCase: true,
+        },
+      },
+    ],
   },
 };

@@ -1,2 +1,4 @@
 // component exports
-export { Card } from "./card";
+export * from "./atoms";
+export * from "./molecules";
+export * from "./organisms";
