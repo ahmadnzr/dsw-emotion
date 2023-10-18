@@ -45,5 +45,6 @@ module.exports = {
         namedComponents: ["arrow-function", "function-declaration"],
       },
     ],
+    "@next/next/no-html-link-for-pages": "off",
   },
 };
