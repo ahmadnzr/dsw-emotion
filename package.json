@@ -1,13 +1,16 @@
 {
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,js,jsx,html,json}\""
   },
   "devDependencies": {
     "eslint": "^8.48.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.1",
     "prettier": "^3.0.3",
     "tsconfig": "*",
     "turbo": "latest"
@@ -17,5 +20,19 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx,html,md,json}": [
+      "yarn format"
+    ],
+    "packages/ui/**/*.{js,ts,jsx,tsx}": [
+      "eslint ./packages/ui/ --no-cache"
+    ],
+    "apps/web/**/*.{js,ts,jsx,tsx}": [
+      "next lint ./apps/web/ --no-cache"
+    ],
+    "apps/docs/**/*.{js,ts,jsx,tsx}": [
+      "eslint ./apps/docs --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    ]
+  }
 }

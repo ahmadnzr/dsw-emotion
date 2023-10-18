@@ -1,10 +1,10 @@
 import * as React from "react";
 
-interface Props {
+interface ExampleAtomProps {
   children?: React.ReactNode;
 }
 
-export const ExampleAtoms = ({ children }: Props) => {
+export const ExampleAtoms = ({ children }: ExampleAtomProps) => {
   return (
     <div>
       <h1>ExampleAtoms</h1>
