@@ -1,4 +1,3 @@
-"use client";
 import { Colors, TextStyles } from "ui";
 
 export default function Home() {
