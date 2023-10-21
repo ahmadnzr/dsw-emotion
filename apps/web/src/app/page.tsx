@@ -1,9 +1,13 @@
-import { ExampleAtoms } from "ui";
+"use client";
+import { Colors, TextStyles } from "ui";
 
 export default function Home() {
   return (
     <main>
-      <ExampleAtoms>Atom Example</ExampleAtoms>
+      <TextStyles color={Colors.PRIMARY.hard} size="xl">
+        Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint
+        cillum sint consectetur cupidatat.
+      </TextStyles>
     </main>
   );
 }
