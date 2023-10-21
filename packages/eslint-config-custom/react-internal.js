@@ -35,6 +35,13 @@ module.exports = {
 
   rules: {
     // add specific rules configurations here
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        warnOnUnassignedImports: true,
+      },
+    ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/function-component-definition": [
       2,
