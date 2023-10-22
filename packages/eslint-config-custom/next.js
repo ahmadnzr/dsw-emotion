@@ -54,4 +54,13 @@ module.exports = {
     ],
     "@next/next/no-html-link-for-pages": "off",
   },
+  "unicorn/filename-case": [
+    "error",
+    {
+      cases: {
+        pascalCase: true,
+        camelCase: true,
+      },
+    },
+  ],
 };
