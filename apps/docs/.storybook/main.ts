@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import type { StorybookConfig } from "@storybook/react-vite";
 
 import { join, dirname } from "path";
@@ -23,6 +24,11 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: "tag",
+  },
+  typescript: {
+    reactDocgen: "react-docgen",
+    skipBabel: true,
+    check: false,
   },
 };
 export default config;
