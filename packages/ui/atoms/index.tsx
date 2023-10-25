@@ -1,3 +1,3 @@
-export * from "./ExampleAtoms";
+// atom components
 
-export * from "./TextStyles";
+export * from "./Text";

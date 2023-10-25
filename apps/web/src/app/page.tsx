@@ -1,12 +1,11 @@
-import { Colors, TextStyles } from "ui";
+import { Text } from "ui";
 
 export default function Home() {
   return (
     <main>
-      <TextStyles color={Colors.PRIMARY.hard} size="xl">
-        Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint
-        cillum sint consectetur cupidatat.
-      </TextStyles>
+      {Array.from({ length: 10 }).map((_, i) => (
+        <Text key={i}>OKKKK</Text>
+      ))}
     </main>
   );
 }
