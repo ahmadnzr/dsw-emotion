@@ -17,12 +17,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
     actions: [
       {
         type: "add",
-        path: "atoms/{{pascalCase name}}/index.tsx",
+        path: "components/atoms/{{pascalCase name}}/index.tsx",
         templateFile: "templates/component.hbs",
       },
       {
         type: "append",
-        path: "atoms/index.tsx",
+        path: "components/atoms/index.tsx",
         pattern: /\n*$/,
         template: 'export * from "./{{pascalCase name}}";',
       },
@@ -41,12 +41,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
     actions: [
       {
         type: "add",
-        path: "molecules/{{pascalCase name}}/index.tsx",
+        path: "components/molecules/{{pascalCase name}}/index.tsx",
         templateFile: "templates/component.hbs",
       },
       {
         type: "append",
-        path: "molecules/index.tsx",
+        path: "components/molecules/index.tsx",
         pattern: /\n*$/,
         template: 'export * from "./{{pascalCase name}}";',
       },
@@ -65,12 +65,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
     actions: [
       {
         type: "add",
-        path: "organisms/{{pascalCase name}}/index.tsx",
+        path: "components/organisms/{{pascalCase name}}/index.tsx",
         templateFile: "templates/component.hbs",
       },
       {
         type: "append",
-        path: "organisms/index.tsx",
+        path: "components/organisms/index.tsx",
         pattern: /\n*$/,
         template: 'export * from "./{{pascalCase name}}";',
       },
