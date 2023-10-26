@@ -53,14 +53,15 @@ module.exports = {
       },
     ],
     "@next/next/no-html-link-for-pages": "off",
-  },
-  "unicorn/filename-case": [
-    "error",
-    {
-      cases: {
-        pascalCase: true,
-        camelCase: true,
+    "unicorn/filename-case": [
+      "error",
+      {
+        cases: {
+          pascalCase: true,
+          camelCase: true,
+        },
+        ignore: ["next-env.d.ts"],
       },
-    },
-  ],
+    ],
+  },
 };
