@@ -43,6 +43,8 @@ module.exports = {
       },
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
     "react/function-component-definition": [
       2,
       {
