@@ -2,6 +2,10 @@
 
 import React from "react";
 import styled from "@emotion/styled";
+import { useTheme } from "@emotion/react";
+
+import { type ThemeType } from "../../../helpers";
+import { defaultTheme } from "../../../helpers/lib/defaultTheme";
 
 type SIZE = "xs" | "sm" | "md" | "lg";
 type WEIGHT = "bold" | "semibold" | "normal" | "thin";
@@ -31,8 +35,14 @@ export const Text = ({
   weight = "normal",
   color,
 }: TextProps) => {
+  const theme = useTheme() as ThemeType;
+
   return (
-    <TextStyles size={size} weight={weight} color={color}>
+    <TextStyles
+      color={color || theme.colors?.neutral.hard}
+      size={size}
+      weight={weight}
+    >
       {children}
     </TextStyles>
   );
@@ -60,7 +70,7 @@ const TextStyles = styled.p(
   ({
     size = "md",
     weight = "normal",
-    color,
+    color = defaultTheme.colors?.neutral.medium,
   }: {
     size?: SIZE;
     weight?: WEIGHT;
