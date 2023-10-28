@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import { Button } from "ui";
+import { Button, Label } from "ui";
 
 const LoginPage = () => {
   return (
@@ -12,34 +12,34 @@ const LoginPage = () => {
         <FormContainer>
           <H1>Masuk</H1>
           <FormGroup>
-            <Label>ID Perusahaan :</Label>
+            <Label size="sm">ID Perusahaan :</Label>
             <InputContainer>
               <LeftIcon />
-              <Input type="text" placeholder="Masukkan ID Perusahaan" />
+              <Input placeholder="Masukkan ID Perusahaan" type="text" />
               <RightIcon />
             </InputContainer>
           </FormGroup>
           <FormGroup>
-            <Label>Id Pengguna :</Label>
+            <Label size="sm">Id Pengguna :</Label>
             <InputContainer>
               <LeftIcon />
-              <Input type="text" placeholder="Masukkan ID Pengguna" />
+              <Input placeholder="Masukkan ID Pengguna" type="text" />
               <RightIcon />
             </InputContainer>
           </FormGroup>
           <FormGroup>
-            <Label>Kata Sandi :</Label>
+            <Label size="sm">Kata Sandi :</Label>
             <InputContainer>
               <LeftIcon />
-              <Input type="text" placeholder="Masukkan Kata Sandi" />
+              <Input placeholder="Masukkan Kata Sandi" type="text" />
               <RightIcon />
             </InputContainer>
           </FormGroup>
-          <Label>Lupa Kata Sandi ?</Label>
+          <Label size="sm">Lupa Kata Sandi ?</Label>
           <FormGroup>
             <Button width="full">Masuk</Button>
           </FormGroup>
-          <Label>Belum punya akun ? Daftar</Label>
+          <Label size="sm">Belum punya akun ? Daftar</Label>
         </FormContainer>
       </RightContent>
     </Container>
@@ -114,9 +114,4 @@ const Input = styled.input({
   "&:focus": {
     outline: "none",
   },
-});
-
-const Label = styled.label({
-  fontSize: "13px",
-  letterSpacing: "0.13px",
 });

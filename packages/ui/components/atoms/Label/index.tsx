@@ -1,7 +1,9 @@
+"use client";
+
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
-import { type ThemeType } from "../../../helpers";
+import { type FontSize, type ThemeType } from "../../../helpers";
 import { defaultTheme } from "../../../helpers/lib/defaultTheme";
 
 interface LabelProps {
@@ -17,16 +19,34 @@ interface LabelProps {
   /**
    * The size of the label
    * */
-  fontSize?: string;
+  size?: FontSize;
+
+  /**
+   * Addtional css styling with classname
+   * */
+  className?: string;
+
+  /**
+   * Addtional css styling with style (inline css)
+   * */
+  style?: Record<string, number | string>;
 }
 
-export const Label = ({ children, color, fontSize }: LabelProps) => {
+export const Label = ({
+  children,
+  color,
+  size = "md",
+  className,
+  style,
+}: LabelProps) => {
   const theme = useTheme() as ThemeType;
 
   return (
     <LabelStyled
-      color={color || theme.colors?.neutral.hard}
-      fontSize={fontSize || theme.fonts?.size.md}
+      className={className}
+      color={color || theme.colors.neutral.hard}
+      size={theme.fonts.size[size]}
+      style={style}
     >
       {children}
     </LabelStyled>
@@ -38,13 +58,13 @@ const LabelStyled = styled.label(
     letterSpacing: "0.13px",
   },
   ({
-    color = defaultTheme.colors?.neutral.medium!,
-    fontSize = defaultTheme.fonts?.size.md!,
+    color = defaultTheme.colors.neutral.medium,
+    size,
   }: {
     color?: string;
-    fontSize?: string;
+    size: string;
   }) => ({
     color,
-    fontSize,
+    fontSize: size,
   }),
 );
