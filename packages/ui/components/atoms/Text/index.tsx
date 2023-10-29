@@ -4,11 +4,11 @@ import React from "react";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 
-import { type ThemeType } from "../../../helpers";
-import { defaultTheme } from "../../../helpers/lib/defaultTheme";
-
-type SIZE = "xs" | "sm" | "md" | "lg";
-type WEIGHT = "bold" | "semibold" | "normal" | "thin";
+import {
+  type ThemeType,
+  type FontSize,
+  type FontWeight,
+} from "../../../helpers";
 
 interface TextProps {
   /**
@@ -18,7 +18,7 @@ interface TextProps {
   /**
    * The size of the text
    */
-  size?: SIZE;
+  size?: FontSize;
   /**
    * Which color to use
    */
@@ -26,7 +26,7 @@ interface TextProps {
   /**
    * The weight of the text
    */
-  weight?: WEIGHT;
+  weight?: FontWeight;
 }
 
 export const Text = ({
@@ -39,28 +39,15 @@ export const Text = ({
 
   return (
     <TextStyles
-      color={color || theme.colors?.neutral.hard}
-      size={size}
-      weight={weight}
+      color={color || theme.colors.neutral.hard}
+      size={theme.fonts.size[size]}
+      weight={theme.fonts.weight[weight]}
     >
       {children}
     </TextStyles>
   );
 };
 
-const listFontSize: Record<SIZE, string> = {
-  xs: "10px",
-  sm: "14px",
-  md: "16px",
-  lg: "20px",
-};
-
-const listFontWeight: Record<WEIGHT, number> = {
-  bold: 700,
-  semibold: 600,
-  normal: 400,
-  thin: 300,
-};
 const TextStyles = styled.p(
   {
     margin: 0,
@@ -68,16 +55,16 @@ const TextStyles = styled.p(
     letterSpacing: "0.15px",
   },
   ({
-    size = "md",
-    weight = "normal",
-    color = defaultTheme.colors?.neutral.medium,
+    size,
+    weight,
+    color,
   }: {
-    size?: SIZE;
-    weight?: WEIGHT;
-    color?: string;
+    size: string;
+    weight: number;
+    color: string;
   }) => ({
-    fontSize: listFontSize[size],
-    fontWeight: listFontWeight[weight],
+    fontSize: size,
+    fontWeight: weight,
     color,
   }),
 );

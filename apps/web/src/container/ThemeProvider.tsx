@@ -17,6 +17,25 @@ const theme: ThemeType = {
       hard: "#374062",
     },
   },
+  fonts: {
+    family: "",
+    size: {
+      xs: "10px",
+      sm: "13px",
+      md: "16px",
+      lg: "20px",
+    },
+    weight: {
+      bold: 700,
+      semibold: 600,
+      normal: 400,
+      thin: 300,
+    },
+    heading: {
+      h1: "24px",
+      h2: "20px",
+    },
+  },
 };
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
