@@ -31,6 +31,10 @@ const theme: ThemeType = {
       normal: 400,
       thin: 300,
     },
+    heading: {
+      h1: "24px",
+      h2: "20px",
+    },
   },
 };
 

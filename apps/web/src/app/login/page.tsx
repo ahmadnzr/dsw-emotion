@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import { Button, Label } from "ui";
+import { Button, Heading, Label } from "ui";
 
 const LoginPage = () => {
   return (
@@ -10,7 +10,7 @@ const LoginPage = () => {
       <LeftContent>Left</LeftContent>
       <RightContent>
         <FormContainer>
-          <H1>Masuk</H1>
+          <Heading>Masuk</Heading>
           <FormGroup>
             <Label size="sm">ID Perusahaan :</Label>
             <InputContainer>
@@ -74,10 +74,6 @@ const FormContainer = styled.form({
   transform: "translate(-50%, -50%)",
   borderRadius: "15px",
   boxShadow: "0px 8px 10px 2px rgba(188, 200, 231, 0.40)",
-});
-
-const H1 = styled.h1({
-  fontSize: "24px",
 });
 
 const FormGroup = styled.div({
