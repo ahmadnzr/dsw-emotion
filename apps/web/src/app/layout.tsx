@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Heading } from "ui";
 
 import ThemeProvider from "../container/ThemeProvider";
 
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider>{children}</ThemeProvider>
+        <Heading>Heading 1</Heading>
       </body>
     </html>
   );

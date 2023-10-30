@@ -3,8 +3,12 @@
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
-import { type FontSize, type ThemeType } from "../../../helpers";
-import { defaultTheme } from "../../../helpers/lib/defaultTheme";
+import {
+  type FontSize,
+  type ThemeType,
+  defaultTheme,
+  isEmptyObj,
+} from "../../../utils";
 
 interface LabelProps {
   /**
@@ -39,7 +43,11 @@ export const Label = ({
   className,
   style,
 }: LabelProps) => {
-  const theme = useTheme() as ThemeType;
+  let theme = useTheme() as ThemeType;
+
+  if (isEmptyObj(theme)) {
+    theme = defaultTheme;
+  }
 
   return (
     <LabelStyled
@@ -57,13 +65,7 @@ const LabelStyled = styled.label(
   {
     letterSpacing: "0.13px",
   },
-  ({
-    color = defaultTheme.colors.neutral.medium,
-    size,
-  }: {
-    color?: string;
-    size: string;
-  }) => ({
+  ({ color, size }: { color: string; size: string }) => ({
     color,
     fontSize: size,
   }),
