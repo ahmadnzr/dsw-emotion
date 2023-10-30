@@ -8,7 +8,9 @@ import {
   type ThemeType,
   type FontSize,
   type FontWeight,
-} from "../../../helpers";
+  isEmptyObj,
+  defaultTheme,
+} from "../../../utils";
 
 interface TextProps {
   /**
@@ -35,8 +37,11 @@ export const Text = ({
   weight = "normal",
   color,
 }: TextProps) => {
-  const theme = useTheme() as ThemeType;
+  let theme = useTheme() as ThemeType;
 
+  if (isEmptyObj(theme)) {
+    theme = defaultTheme;
+  }
   return (
     <TextStyles
       color={color || theme.colors.neutral.hard}
