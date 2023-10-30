@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import { Button, Heading, Label } from "ui";
+import { Button, Label, Heading } from "ui";
 
 const LoginPage = () => {
   return (

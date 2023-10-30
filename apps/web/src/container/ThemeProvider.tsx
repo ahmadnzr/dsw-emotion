@@ -11,10 +11,14 @@ interface ThemeProviderProps {
 const theme: ThemeType = {
   colors: {
     primary: {
-      hard: "#0061A7",
+      hard: "#06377B",
+      medium: "#0061A7",
+      soft: "#66A3FF",
     },
     neutral: {
       hard: "#374062",
+      medium: "#7B87AF",
+      soft: "#AEB3C6",
     },
   },
   fonts: {
