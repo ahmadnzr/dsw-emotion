@@ -42,6 +42,12 @@ module.exports = {
         warnOnUnassignedImports: true,
       },
     ],
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        allowSingleExtends: true,
+      },
+    ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
