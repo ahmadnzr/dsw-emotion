@@ -88,6 +88,7 @@ const getStyleVariant = (variant: ButtonVariant, theme: ThemeType) => {
       color: theme.colors.neutral.light,
       "&:hover": {
         backgroundColor: theme.colors.primary.hard,
+        border: `1px solid ${theme.colors.primary.hard}`,
       },
     },
     outlined: {
