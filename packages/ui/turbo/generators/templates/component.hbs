@@ -1,14 +1,32 @@
+"use client"
+
 import React from 'react'
+import { useTheme } from '@emotion/react'
+import styled from '@emotion/styled'
+
+import { type ThemeType, defaultTheme, isEmptyObj } from '../../../utils'
 
 interface {{ pascalCase name }}Props {
   children?: React.ReactNode;
 }
 
 export const {{ pascalCase name }} = ({ children }: {{pascalCase name}}Props) => {
+  let theme = useTheme() as ThemeType
+
+  /**
+  * Check if the component not wrapped with ThemeProvider
+  * If yes then use the defaultTheme
+  */
+  if(isEmptyObj(theme)){
+    theme = defaultTheme
+  }
+
   return (
-    <div>
+    <{{ pascalCase name }}Styled>
       <h1>{{ name }}</h1>
       {children}
-    </div>
+    </{{ pascalCase name }}Styled>
   );
 };
+
+const {{ pascalCase name }}Styled = styled.div({},() => ({}))

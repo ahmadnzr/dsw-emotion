@@ -23,7 +23,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       {
         type: "append",
         path: "components/atoms/index.tsx",
-        pattern: /\n*$/,
+        pattern: /(?<insertion>\/\/ atoms exports)/g,
         template: 'export * from "./{{pascalCase name}}";',
       },
     ],
@@ -47,7 +47,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       {
         type: "append",
         path: "components/molecules/index.tsx",
-        pattern: /\n*$/,
+        pattern: /(?<insertion>\/\/ molecules exports)/g,
         template: 'export * from "./{{pascalCase name}}";',
       },
     ],
@@ -71,7 +71,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       {
         type: "append",
         path: "components/organisms/index.tsx",
-        pattern: /\n*$/,
+        pattern: /(?<insertion>\/\/ organisms exports)/g,
         template: 'export * from "./{{pascalCase name}}";',
       },
     ],
