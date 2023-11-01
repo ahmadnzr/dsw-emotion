@@ -14,11 +14,13 @@ const theme: ThemeType = {
       hard: "#06377B",
       medium: "#0061A7",
       soft: "#66A3FF",
+      light: "#eff8ff",
     },
     neutral: {
       hard: "#374062",
       medium: "#7B87AF",
       soft: "#AEB3C6",
+      light: "#fff",
     },
   },
   fonts: {
@@ -26,7 +28,7 @@ const theme: ThemeType = {
     size: {
       xs: "10px",
       sm: "13px",
-      md: "16px",
+      md: "15px",
       lg: "20px",
     },
     weight: {
@@ -39,6 +41,12 @@ const theme: ThemeType = {
       h1: "24px",
       h2: "20px",
     },
+  },
+  spacing: {
+    xs: 4,
+    sm: 8,
+    md: 10,
+    lg: 20,
   },
 };
 
