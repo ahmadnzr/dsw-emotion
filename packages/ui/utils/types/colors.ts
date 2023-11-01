@@ -1,6 +1,6 @@
 type ColorKeys = "primary" | "neutral";
 
-type ColorValue = Record<"hard" | "medium" | "soft", string>;
+type ColorValue = Record<"hard" | "medium" | "soft" | "light", string>;
 
 type ColorType = Record<ColorKeys, ColorValue>;
 
