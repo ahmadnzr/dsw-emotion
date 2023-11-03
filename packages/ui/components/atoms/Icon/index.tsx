@@ -1,7 +1,6 @@
 "use client";
 
 import { useTheme } from "@emotion/react";
-import styled from "@emotion/styled";
 import PlusIcon from "@heroicons/react/24/outline/PlusIcon";
 import PlusIconCirle from "@heroicons/react/24/outline/PlusCircleIcon";
 
@@ -10,7 +9,7 @@ import { type ThemeType, defaultTheme, isEmptyObj } from "../../../utils";
 export type IconName = "plus" | "plus-circle";
 export type IconSize = "sm" | "md" | "lg";
 
-interface IconProps {
+export interface IconProps {
   /**
    * Please see : https://heroicons.dev/.
    * Change icon name from PascalCase to kebab-case. Also see the available icon from this option select
@@ -44,7 +43,7 @@ export const Icon = ({
     theme = defaultTheme;
   }
 
-  const getIconSize = (icSize: IconSize) => {
+  const getIconStyle = (icColor: string, icSize: IconSize) => {
     const iconSize: Record<IconSize, { height: string; width: string }> = {
       sm: {
         width: `${theme.spacing.sm * 2}px`,
@@ -60,39 +59,16 @@ export const Icon = ({
       },
     };
 
-    return iconSize[icSize];
+    return {
+      color: icColor,
+      ...iconSize[icSize],
+    };
   };
 
   switch (name) {
     case "plus":
-      return <PlusIconStyled color={color} size={getIconSize(size)} />;
+      return <PlusIcon style={getIconStyle(color, size)} />;
     case "plus-circle":
-      return <PlusIconCircleStyled color={color} size={getIconSize(size)} />;
+      return <PlusIconCirle style={getIconStyle(color, size)} />;
   }
 };
-
-const PlusIconStyled = styled(PlusIcon)(
-  ({
-    size,
-    color,
-  }: {
-    size: { width: string; height: string };
-    color: string;
-  }) => ({
-    ...size,
-    color,
-  }),
-);
-
-const PlusIconCircleStyled = styled(PlusIconCirle)(
-  ({
-    size,
-    color,
-  }: {
-    size: { width: string; height: string };
-    color: string;
-  }) => ({
-    ...size,
-    color,
-  }),
-);
