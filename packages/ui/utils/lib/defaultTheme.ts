@@ -7,11 +7,13 @@ const defaultTheme: ThemeType = {
       medium: "#0061A7",
       soft: "#66A3FF",
       light: "#eff8ff",
+      ultrasoft: "#B3C1E7",
     },
     neutral: {
       hard: "#374062",
       medium: "#7B87AF",
       soft: "#AEB3C6",
+      ultrasoft: "#B3C1E7",
       light: "#fff",
     },
   },
