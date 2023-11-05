@@ -83,28 +83,27 @@ const getStyleVariant = (variant: ButtonVariant, theme: ThemeType) => {
     Record<string, string | Record<string, string>>
   > = {
     contained: {
-      backgroundColor: theme.colors.primary.medium,
-      border: `1px solid ${theme.colors.primary.medium}`,
-      color: theme.colors.neutral.light,
+      backgroundColor: theme.colors.primary.hard,
+      border: `1px solid ${theme.colors.primary.hard}`,
+      color: theme.colors.white,
       "&:hover": {
-        backgroundColor: theme.colors.primary.hard,
-        border: `1px solid ${theme.colors.primary.hard}`,
+        opacity: "0.90",
       },
     },
     outlined: {
-      backgroundColor: theme.colors.neutral.light,
-      color: theme.colors.primary.medium,
-      border: `1px solid ${theme.colors.primary.medium}`,
+      backgroundColor: theme.colors.white,
+      color: theme.colors.primary.hard,
+      border: `1px solid ${theme.colors.primary.hard}`,
       "&:hover": {
-        backgroundColor: theme.colors.primary.light,
+        backgroundColor: theme.colors.primary.soft,
       },
     },
     text: {
       backgroundColor: "transparent",
-      color: theme.colors.primary.medium,
+      color: theme.colors.primary.hard,
       border: `1px solid transparent`,
       "&:hover": {
-        backgroundColor: theme.colors.primary.light,
+        backgroundColor: theme.colors.primary.soft,
       },
     },
   };
@@ -116,6 +115,7 @@ const ButtonStyled = styled.button(
   {
     cursor: "pointer",
     boxSizing: "border-box",
+    transition: "0.1s ease",
   },
   ({
     theme,

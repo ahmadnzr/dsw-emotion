@@ -3,19 +3,27 @@ import { type ThemeType } from "../types";
 const defaultTheme: ThemeType = {
   colors: {
     primary: {
-      hard: "#06377B",
-      medium: "#0061A7",
-      soft: "#66A3FF",
-      light: "#eff8ff",
-      ultrasoft: "#B3C1E7",
+      dark: "#06377B",
+      hard: "#0061A7",
+      medium: "#66A3FF",
+      soft: "#EAF2FF",
     },
     neutral: {
       hard: "#374062",
-      medium: "#7B87AF",
-      soft: "#AEB3C6",
-      ultrasoft: "#B3C1E7",
-      light: "#fff",
+      medium: "#B3C1E7",
+      soft: "",
     },
+    error: {
+      hard: "#FF4F4F",
+      medium: "#D14848",
+      soft: "#F4DEDE",
+    },
+    success: {
+      hard: "#75D37F",
+      medium: "",
+      soft: "#E7FFDC",
+    },
+    white: "#fff",
   },
   fonts: {
     family: "",
