@@ -1,3 +1,5 @@
+"use client";
+
 import { type FunctionComponent, type SVGProps, createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
