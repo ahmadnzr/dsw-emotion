@@ -46,6 +46,12 @@ module.exports = {
       },
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        checksVoidReturn: false,
+      },
+    ],
     "react/function-component-definition": [
       2,
       {
