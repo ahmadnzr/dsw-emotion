@@ -2,42 +2,80 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import { Button, Label, Heading } from "ui";
+import { Input, Button, Label, Heading } from "ui";
+import { type SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+interface LoginInputType {
+  companyId: string;
+  username: string;
+  password: string;
+}
+
+const schema = yup.object({
+  companyId: yup.string().required("Req").min(5, "Minimal 5"),
+  username: yup.string().required(),
+  password: yup.string().required(),
+});
 
 const LoginPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginInputType>({
+    resolver: yupResolver(schema),
+  });
+
+  const handleFormSubmit: SubmitHandler<LoginInputType> = (data) => {
+    // eslint-disable-next-line no-console -- Allow for this
+    console.log(data);
+  };
+
   return (
     <Container>
       <LeftContent>Left</LeftContent>
       <RightContent>
-        <FormContainer>
+        <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>
           <Heading>Masuk</Heading>
           <FormGroup>
             <Label size="sm">ID Perusahaan :</Label>
-            <InputContainer>
-              <LeftIcon />
-              <Input placeholder="Masukkan ID Perusahaan" type="text" />
-              <RightIcon />
-            </InputContainer>
+            <Input
+              autoComplete="off"
+              error={errors.companyId?.message}
+              leftIcon="building-library"
+              placeholder="Masukkan ID Perusahaan"
+              {...register("companyId")}
+            />
           </FormGroup>
           <FormGroup>
             <Label size="sm">Id Pengguna :</Label>
-            <InputContainer>
-              <LeftIcon />
-              <Input placeholder="Masukkan ID Pengguna" type="text" />
-              <RightIcon />
-            </InputContainer>
+            <Input
+              autoComplete="off"
+              error={errors.username?.message}
+              leftIcon="user"
+              placeholder="Masukkan Nama User"
+              {...register("username")}
+            />
           </FormGroup>
           <FormGroup>
             <Label size="sm">Kata Sandi :</Label>
-            <InputContainer>
-              <LeftIcon />
-              <Input placeholder="Masukkan Kata Sandi" type="text" />
-              <RightIcon />
-            </InputContainer>
+            <Input
+              autoComplete="off"
+              error={errors.password?.message}
+              leftIcon="lock-closed"
+              placeholder="Masukkan Password"
+              rightIcon="eye"
+              type="password"
+              {...register("password")}
+            />
           </FormGroup>
           <Label size="sm">Lupa Kata Sandi ?</Label>
           <FormGroup>
-            <Button width="full">Masuk</Button>
+            <Button type="submit" width="full">
+              Masuk
+            </Button>
           </FormGroup>
           <Label size="sm">Belum punya akun ? Daftar</Label>
         </FormContainer>
@@ -81,33 +119,4 @@ const FormGroup = styled.div({
   display: "flex",
   flexDirection: "column",
   gap: "5px",
-});
-
-const InputContainer = styled.div({
-  padding: "11px 10px",
-  display: "flex",
-  gap: "5px",
-  borderRadius: "10px",
-  border: "1px solid #B3C1E7",
-});
-
-const LeftIcon = styled.div({
-  width: "18px",
-  height: "18px",
-  backgroundColor: "aqua",
-});
-
-const RightIcon = styled.div({
-  width: "18px",
-  height: "18px",
-  backgroundColor: "aqua",
-});
-
-const Input = styled.input({
-  flex: 1,
-  border: "none",
-  fontSize: "15px",
-  "&:focus": {
-    outline: "none",
-  },
 });
