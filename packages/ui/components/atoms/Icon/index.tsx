@@ -3,10 +3,23 @@
 import { useTheme } from "@emotion/react";
 import PlusIcon from "@heroicons/react/24/outline/PlusIcon";
 import PlusIconCirle from "@heroicons/react/24/outline/PlusCircleIcon";
+import EyeIcon from "@heroicons/react/24/outline/EyeIcon";
+import EyeSlashIcon from "@heroicons/react/24/outline/EyeSlashIcon";
+import BuildingLibraryIcon from "@heroicons/react/24/outline/BuildingLibraryIcon";
+import UserIcon from "@heroicons/react/24/outline/UserIcon";
+import LockClosedIcon from "@heroicons/react/24/outline/LockClosedIcon";
 
 import { type ThemeType, defaultTheme, isEmptyObj } from "../../../utils";
 
-export type IconName = "plus" | "plus-circle";
+export type IconName =
+  | "plus"
+  | "plus-circle"
+  | "eye"
+  | "eye-slash"
+  | "building-library"
+  | "user"
+  | "lock-closed";
+
 export type IconSize = "sm" | "md" | "lg";
 
 export interface IconProps {
@@ -70,5 +83,15 @@ export const Icon = ({
       return <PlusIcon style={getIconStyle(color, size)} />;
     case "plus-circle":
       return <PlusIconCirle style={getIconStyle(color, size)} />;
+    case "eye":
+      return <EyeIcon style={getIconStyle(color, size)} />;
+    case "eye-slash":
+      return <EyeSlashIcon style={getIconStyle(color, size)} />;
+    case "building-library":
+      return <BuildingLibraryIcon style={getIconStyle(color, size)} />;
+    case "user":
+      return <UserIcon style={getIconStyle(color, size)} />;
+    case "lock-closed":
+      return <LockClosedIcon style={getIconStyle(color, size)} />;
   }
 };
