@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Input, Button, Label, Heading } from "ui";
 import { type SubmitHandler, useForm } from "react-hook-form";
@@ -27,6 +27,8 @@ const LoginPage = () => {
   } = useForm<LoginInputType>({
     resolver: yupResolver(schema),
   });
+
+  const [showPwd, setShowPwd] = useState(false);
 
   const handleFormSubmit: SubmitHandler<LoginInputType> = (data) => {
     // eslint-disable-next-line no-console -- Allow for this
@@ -64,10 +66,13 @@ const LoginPage = () => {
             <Input
               autoComplete="off"
               error={errors.password?.message}
+              eyeButton
               leftIcon="lock-closed"
+              onEyeButtonClick={() => {
+                setShowPwd(!showPwd);
+              }}
               placeholder="Masukkan Password"
-              rightIcon="eye"
-              type="password"
+              type={showPwd ? "text" : "password"}
               {...register("password")}
             />
           </FormGroup>
