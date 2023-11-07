@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef, type ForwardedRef } from "react";
+import React, { forwardRef, useState, type ForwardedRef } from "react";
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
@@ -18,11 +18,6 @@ interface InputProps {
    * Left icon of the Input, please see Icon component to see icon name
    */
   leftIcon?: IconName;
-
-  /**
-   * Right icon of the Input, please see Icon component to see icon name
-   */
-  rightIcon?: IconName;
 
   /**
    * Input name
@@ -65,6 +60,17 @@ interface InputProps {
   className?: string;
 
   /**
+   * Eye Button
+   */
+  eyeButton?: boolean;
+
+  /**
+   * Action On Eye Button clicked
+   */
+
+  onEyeButtonClick?: () => void;
+
+  /**
    * `onChange` event
    */
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -73,7 +79,8 @@ interface InputProps {
 export const Input = forwardRef(function MyInput(
   {
     leftIcon,
-    rightIcon,
+    eyeButton,
+    onEyeButtonClick,
     value,
     name,
     onChange,
@@ -96,12 +103,21 @@ export const Input = forwardRef(function MyInput(
     theme = defaultTheme;
   }
 
+  const [openEye, setOpenEye] = useState(false);
+
+  const handleOnEyeButton = () => {
+    setOpenEye(!openEye);
+
+    if (onEyeButtonClick) {
+      onEyeButtonClick();
+    }
+  };
+
   return (
     <Container>
       <InputContainer
         isError={Boolean(error)}
         leftIcon={leftIcon}
-        rightIcon={rightIcon}
         theme={theme}
       >
         <InputStyled
@@ -117,9 +133,22 @@ export const Input = forwardRef(function MyInput(
           type={type}
           value={value}
         />
+        {eyeButton ? (
+          <EyeButtonContainer>
+            <EyeButton onClick={handleOnEyeButton} theme={theme}>
+              <Icon
+                color={
+                  error ? theme.colors.error.hard : theme.colors.neutral.medium
+                }
+                name={openEye ? "eye" : "eye-slash"}
+                size="md"
+              />
+            </EyeButton>
+          </EyeButtonContainer>
+        ) : null}
       </InputContainer>
       {error ? (
-        <Text color={theme.colors.error.hard} size="xs">
+        <Text className="error-text" color={theme.colors.error.hard} size="xs">
           {`* ${error}`}
         </Text>
       ) : null}
@@ -131,6 +160,10 @@ const Container = styled.div({
   display: "flex",
   flexDirection: "column",
   gap: "2px",
+
+  "& .error-text": {
+    marginLeft: "4px",
+  },
 });
 
 const InputContainer = styled.div(
@@ -141,12 +174,10 @@ const InputContainer = styled.div(
   },
   ({
     leftIcon,
-    rightIcon,
     theme,
     isError,
   }: {
     leftIcon?: IconName;
-    rightIcon?: IconName;
     theme: ThemeType;
     isError: boolean;
   }) => {
@@ -166,6 +197,11 @@ const InputContainer = styled.div(
       }`,
       color: theme.colors.neutral.medium,
 
+      "&:hover": {
+        cursor: "text",
+        border: `1px solid ${theme.colors.primary.hard}`,
+      },
+
       ...(leftIcon !== undefined
         ? {
             "&::before": {
@@ -177,20 +213,6 @@ const InputContainer = styled.div(
                   color: isError
                     ? theme.colors.error.hard
                     : theme.colors.neutral.medium,
-                },
-              )}) no-repeat center`,
-            },
-          }
-        : {}),
-
-      ...(rightIcon !== undefined
-        ? {
-            "&::after": {
-              ...iconStyle,
-              background: `url(${reactSvgComponentToMarkupString<IconProps>(
-                Icon,
-                {
-                  name: rightIcon,
                 },
               )}) no-repeat center`,
             },
@@ -218,6 +240,36 @@ const InputStyled = styled.input(
 
     "&::placeholder": {
       color: theme.colors.neutral.medium,
+    },
+
+    "&::before": {
+      content: '"OK"',
+    },
+  }),
+);
+
+const EyeButtonContainer = styled.div({
+  position: "relative",
+  width: "24px",
+});
+
+const EyeButton = styled.div(
+  {
+    position: "absolute",
+    cursor: "pointer",
+    width: "24px",
+    height: "24px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "100%",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  },
+  ({ theme }: { theme: ThemeType }) => ({
+    "&:hover": {
+      backgroundColor: theme.colors.primary.soft,
     },
   }),
 );

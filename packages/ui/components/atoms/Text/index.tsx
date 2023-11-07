@@ -29,6 +29,10 @@ interface TextProps {
    * The weight of the text
    */
   weight?: FontWeight;
+  /**
+   * Additional style with className
+   */
+  className?: string;
 }
 
 export const Text = ({
@@ -36,6 +40,7 @@ export const Text = ({
   size = "md",
   weight = "normal",
   color,
+  className,
 }: TextProps) => {
   let theme = useTheme() as ThemeType;
 
@@ -47,6 +52,7 @@ export const Text = ({
       color={color || theme.colors.neutral.hard}
       size={theme.fonts.size[size]}
       weight={theme.fonts.weight[weight]}
+      className={className}
     >
       {children}
     </TextStyles>
