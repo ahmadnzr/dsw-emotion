@@ -17,6 +17,10 @@ interface LabelProps {
   children: string;
 
   /**
+   * htmlFor */
+  htmlFor?: string;
+
+  /**
    * Text color */
   color?: string;
 
@@ -42,6 +46,7 @@ export const Label = ({
   size = "md",
   className,
   style,
+  htmlFor,
 }: LabelProps) => {
   let theme = useTheme() as ThemeType;
 
@@ -53,6 +58,7 @@ export const Label = ({
     <LabelStyled
       className={className}
       color={color || theme.colors.neutral.hard}
+      htmlFor={htmlFor}
       size={theme.fonts.size[size]}
       style={style}
     >

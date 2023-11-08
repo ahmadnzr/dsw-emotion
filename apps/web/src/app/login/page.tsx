@@ -42,7 +42,9 @@ const LoginPage = () => {
         <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>
           <Heading>Masuk</Heading>
           <FormGroup>
-            <Label size="sm">ID Perusahaan :</Label>
+            <Label htmlFor="companyId" size="sm">
+              ID Perusahaan :
+            </Label>
             <Input
               autoComplete="off"
               error={errors.companyId?.message}
@@ -52,7 +54,9 @@ const LoginPage = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Label size="sm">Id Pengguna :</Label>
+            <Label htmlFor="username" size="sm">
+              Id Pengguna :
+            </Label>
             <Input
               autoComplete="off"
               error={errors.username?.message}
@@ -62,7 +66,9 @@ const LoginPage = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Label size="sm">Kata Sandi :</Label>
+            <Label htmlFor="password" size="sm">
+              Kata Sandi :
+            </Label>
             <Input
               autoComplete="off"
               error={errors.password?.message}
