@@ -1,11 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import styled from "@emotion/styled";
 import { Input, Button, Label, Heading } from "ui";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 interface LoginInputType {
   companyId: string;
@@ -37,7 +42,19 @@ const LoginPage = () => {
 
   return (
     <Container>
-      <LeftContent>Left</LeftContent>
+      <LeftContent>
+        <Swiper modules={[Pagination, A11y]} pagination={{ clickable: true }}>
+          <SwiperSlide>
+            <Image alt="" height={600} src="/img/image-2.jpeg" width={600} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Image alt="" height={600} src="/img/image-1.jpeg" width={600} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Image alt="" height={600} src="/img/image-3.jpeg" width={600} />
+          </SwiperSlide>
+        </Swiper>
+      </LeftContent>
       <RightContent>
         <FormContainer onSubmit={handleSubmit(handleFormSubmit)}>
           <Heading>Masuk</Heading>
@@ -99,15 +116,15 @@ export default LoginPage;
 
 const Container = styled.div({
   display: "flex",
-  minHeight: "100vh",
+  height: "100vh",
 });
 
 const LeftContent = styled.div({
-  flex: 1,
+  width: "50%",
 });
 
 const RightContent = styled.div({
-  flex: 1,
+  width: "50%",
   position: "relative",
 });
 
@@ -123,6 +140,7 @@ const FormContainer = styled.form({
   transform: "translate(-50%, -50%)",
   borderRadius: "15px",
   boxShadow: "0px 8px 10px 2px rgba(188, 200, 231, 0.40)",
+  backgroundColor: "#fff",
 });
 
 const FormGroup = styled.div({
