@@ -1,30 +1,32 @@
 import { type ThemeType } from "../types";
 
-const defaultTheme: ThemeType = {
-  colors: {
-    primary: {
-      dark: "#06377B",
-      hard: "#0061A7",
-      medium: "#66A3FF",
-      soft: "#EAF2FF",
-    },
-    neutral: {
-      hard: "#374062",
-      medium: "#B3C1E7",
-      soft: "",
-    },
-    error: {
-      hard: "#FF4F4F",
-      medium: "#D14848",
-      soft: "#F4DEDE",
-    },
-    success: {
-      hard: "#75D37F",
-      medium: "",
-      soft: "#E7FFDC",
-    },
-    white: "#fff",
+const Colors = {
+  primary: {
+    dark: "#06377B",
+    hard: "#0061A7",
+    medium: "#66A3FF",
+    soft: "#EAF2FF",
   },
+  neutral: {
+    hard: "#374062",
+    medium: "#B3C1E7",
+    soft: "",
+  },
+  error: {
+    hard: "#FF4F4F",
+    medium: "#D14848",
+    soft: "#F4DEDE",
+  },
+  success: {
+    hard: "#75D37F",
+    medium: "",
+    soft: "#E7FFDC",
+  },
+  white: "#fff",
+};
+
+const defaultTheme: ThemeType = {
+  colors: Colors,
   fonts: {
     family: "",
     size: {
@@ -52,4 +54,4 @@ const defaultTheme: ThemeType = {
   },
 };
 
-export { defaultTheme };
+export { defaultTheme, Colors };
