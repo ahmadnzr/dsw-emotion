@@ -11,7 +11,7 @@ interface TagProps {
   /**
    * Text inside tag
    */
-  children?: React.ReactNode;
+  children?: string;
 
   /**
    * Tag backround color
@@ -40,7 +40,7 @@ interface TagProps {
 }
 
 export const Tag = ({
-  children,
+  children = "Text",
   backgroundColor = defaultTheme.colors.primary.soft,
   color = defaultTheme.colors.primary.medium,
   outlined = false,

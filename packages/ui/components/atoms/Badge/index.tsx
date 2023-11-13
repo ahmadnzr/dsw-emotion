@@ -13,7 +13,7 @@ import {
 
 type Position = "top-right" | "top-left" | "bottom-right" | "bottom-left";
 
-interface BadgetProps {
+interface BadgeProps {
   /**
    * Budge Content
    */
@@ -35,12 +35,12 @@ interface BadgetProps {
   className?: string;
 }
 
-export const Badget = ({
+export const Badge = ({
   className,
   children,
   dotPosition = "top-right",
   dotColor = Colors.error.hard,
-}: BadgetProps) => {
+}: BadgeProps) => {
   let theme = useTheme() as ThemeType;
 
   /**
@@ -52,14 +52,14 @@ export const Badget = ({
   }
 
   return (
-    <BadgetStyled className={className}>
+    <BadgeStyled className={className}>
       {children}
       <Dot bgColor={dotColor} position={dotPosition} />
-    </BadgetStyled>
+    </BadgeStyled>
   );
 };
 
-const BadgetStyled = styled.div({}, () => ({
+const BadgeStyled = styled.div({}, () => ({
   position: "relative",
   width: "fit-content",
   height: "fit-content",
