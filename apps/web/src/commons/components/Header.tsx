@@ -22,10 +22,10 @@ const Header = () => {
       </HeaderLogo>
       <HeaderInfo>
         <UserDetail>
-          <Text>Ahmad Nizar</Text>
-          <Tag>
-            <Text size="xs">Admin</Text>
-          </Tag>
+          <Text size="md" weight="semibold">
+            Ahmad Nizar
+          </Text>
+          <Tag>Admin</Tag>
         </UserDetail>
         <UserImage>
           <Image
@@ -76,13 +76,7 @@ const UserDetail = styled.div({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-end",
-});
-
-const Tag = styled.div({
-  backgroundColor: Colors.neutral.medium,
-  padding: "2px 4px",
-  borderRadius: "4px",
-  width: "fit-content",
+  gap: "2px",
 });
 
 const UserImage = styled.div({
@@ -90,6 +84,8 @@ const UserImage = styled.div({
   height: "44px",
   borderRadius: "100%",
   overflow: "hidden",
+  border: "1px solid #fff",
+  boxShadow: "0px 8px 10px 0px rgba(188, 200, 231, 0.50)",
 
   "& .usr-image": {
     width: "100%",
