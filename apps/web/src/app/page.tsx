@@ -1,11 +1,9 @@
-import { Text } from "ui";
+import Header from "../commons/components/Header";
 
 export default function Home() {
   return (
     <main>
-      {Array.from({ length: 10 }).map((_, i) => (
-        <Text key={i}>OKKKK</Text>
-      ))}
+      <Header />
     </main>
   );
 }

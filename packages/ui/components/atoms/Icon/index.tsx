@@ -8,6 +8,7 @@ import EyeSlashIcon from "@heroicons/react/24/outline/EyeSlashIcon";
 import BuildingLibraryIcon from "@heroicons/react/24/outline/BuildingLibraryIcon";
 import UserIcon from "@heroicons/react/24/outline/UserIcon";
 import LockClosedIcon from "@heroicons/react/24/outline/LockClosedIcon";
+import BellIcon from "@heroicons/react/24/outline/BellIcon";
 
 import { type ThemeType, defaultTheme, isEmptyObj } from "../../../utils";
 
@@ -18,7 +19,8 @@ export type IconName =
   | "eye-slash"
   | "building-library"
   | "user"
-  | "lock-closed";
+  | "lock-closed"
+  | "bell-icon";
 
 export type IconSize = "sm" | "md" | "lg";
 
@@ -93,5 +95,7 @@ export const Icon = ({
       return <UserIcon style={getIconStyle(color, size)} />;
     case "lock-closed":
       return <LockClosedIcon style={getIconStyle(color, size)} />;
+    case "bell-icon":
+      return <BellIcon style={getIconStyle(color, size)} />;
   }
 };
