@@ -1,6 +1,6 @@
 // atoms exports
 export * from "./Tag";
-export * from "./Badget";
+export * from "./Badge";
 export * from "./Input";
 export * from "./Text";
 export * from "./Label";

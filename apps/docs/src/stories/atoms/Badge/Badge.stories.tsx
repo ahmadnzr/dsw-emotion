@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Badget } from "ui/components/atoms/Badget";
+import { Badge } from "ui/components/atoms/Badge";
 
 const meta = {
-  title: "Components/Atoms/Budget",
-  component: Badget,
+  title: "Components/Atoms/Budge",
+  component: Badge,
   parameters: {},
   tags: ["autodocs"],
   // argTypes: {
   //   children: { control: "React.ReactNode" },
   // },
   render: ({ ...args }) => (
-    <Badget {...args}>
+    <Badge {...args}>
       <Container />
-    </Badget>
+    </Badge>
   ),
-} satisfies Meta<typeof Badget>;
+} satisfies Meta<typeof Badge>;
 
 export default meta;
 

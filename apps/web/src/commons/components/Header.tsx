@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
-import { Badget, Colors, Icon, Tag, Text } from "ui";
+import { Badge, Colors, Icon, Tag, Text } from "ui";
 
 import Logo from "../assets/img/logo.png";
 import User from "../assets/img/user.png";
@@ -38,9 +38,9 @@ const Header = () => {
         </UserImage>
       </HeaderInfo>
       <NotifSection>
-        <Badget>
+        <Badge>
           <Icon color={Colors.neutral.hard} name="bell-icon" size="md" />
-        </Badget>
+        </Badge>
       </NotifSection>
     </HeaderStyled>
   );
