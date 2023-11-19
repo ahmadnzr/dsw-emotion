@@ -47,12 +47,18 @@ const Header = () => {
 };
 
 const HeaderStyled = styled.div({
-  padding: "20px 40px",
+  position: "fixed",
+  height: "80px",
+  top: 0,
+  left: 0,
+  right: 0,
+  padding: "0 60px 0 40px",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
   gap: "10px",
   backgroundColor: "white",
+  boxShadow: "0px 3px 10px 0px rgba(188, 200, 231, 0.20)",
 });
 
 const HeaderLogo = styled.div({
