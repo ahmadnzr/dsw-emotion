@@ -2,39 +2,59 @@
 
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { Icon } from "ui";
+import { Icon, Text } from "ui";
 
 const listMenu = [
   {
     id: 0,
     title: "Dashboard",
+    icon: "home",
     childs: [],
   },
   {
     id: 1,
-    title: "Tabungan",
+    title: "Cashflow",
+    icon: "bank-notes",
     childs: [
       {
-        id: 0,
-        title: "Rekening Koran",
+        id: "1-0",
+        title: "Pengeluaran",
       },
       {
-        id: 1,
-        title: "Giro",
+        id: "1-1",
+        title: "Pemasukan",
+      },
+      {
+        id: "1-2",
+        title: "Hutang/Piutang",
       },
     ],
+  },
+  {
+    id: 2,
+    title: "Notes",
+    icon: "clipboard-document",
+    childs: [],
+  },
+  {
+    id: 3,
+    title: "Settings",
+    icon: "cog-6-tooth",
+    childs: [],
   },
 ];
 
 const Sidebar = () => {
-  const [active, setActive] = useState(false);
+  const [open, setOpen] = useState<number | undefined>(undefined);
 
-  const onClickMenu = (isHaveChild: boolean) => {
-    if (!isHaveChild) {
-      return;
-    }
+  const onClickGroup = (groupId: number) => {
+    setOpen((val) => {
+      if (val !== groupId) {
+        return groupId;
+      }
 
-    setActive((val) => !val);
+      return undefined;
+    });
   };
 
   return (
@@ -43,15 +63,24 @@ const Sidebar = () => {
         <GroupMenu key={item.id}>
           <MenuTitle
             onClick={() => {
-              onClickMenu(Boolean(item.childs.length));
+              onClickGroup(item.id);
             }}
           >
-            <Icon color="#0061A7" name="building-library" size="md" />
-            {item.title}
+            <Icon color="#0061A7" name={item.icon} type="filled" size="lg" />
+            <Text className="title">{item.title}</Text>
+            {item.childs.length ? (
+              <Icon
+                color="#0061A7"
+                name={item.id === open ? "chevron-up" : "chevron-down"}
+                size="sm"
+              />
+            ) : null}
           </MenuTitle>
           {item.childs.map((child) => (
-            <ListItem active={active} key={child.id}>
-              <MenuItem>{child.title}</MenuItem>
+            <ListItem active={item.id === open} key={child.id}>
+              <MenuItem>
+                <Text>{child.title}</Text>
+              </MenuItem>
             </ListItem>
           ))}
         </GroupMenu>
@@ -67,6 +96,7 @@ const SidebarStyled = styled.div({
   left: 0,
   bottom: 0,
   backgroundColor: "#fff",
+  userSelect: "none",
 });
 
 const GroupMenu = styled.div({});
@@ -76,12 +106,17 @@ const MenuTitle = styled.div({
   height: "32px",
   display: "flex",
   alignItems: "center",
+  justifyContent: "space-between",
   gap: "10px",
   cursor: "pointer",
   transition: "0.3s ease",
 
   "&:hover": {
     backgroundColor: "#EAF2FF",
+  },
+
+  "& .title": {
+    flex: 1,
   },
 });
 
@@ -90,7 +125,7 @@ const ListItem = styled.div({}, ({ active }: { active: boolean }) => ({
 }));
 
 const MenuItem = styled.div({
-  paddingLeft: "50px",
+  paddingLeft: "55px",
   height: "32px",
   display: "flex",
   alignItems: "center",
