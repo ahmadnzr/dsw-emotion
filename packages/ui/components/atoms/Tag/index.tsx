@@ -65,7 +65,12 @@ export const Tag = ({
       outlined={outlined}
       style={style}
     >
-      <Text color={color} size="xs" weight="semibold">
+      <Text
+        color={color}
+        size="xs"
+        style={{ display: "block" }}
+        weight="semibold"
+      >
         {children}
       </Text>
     </TagStyled>
