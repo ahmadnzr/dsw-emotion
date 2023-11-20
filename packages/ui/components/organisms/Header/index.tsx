@@ -1,45 +1,82 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Badge, Colors, Icon, Tag, Text } from "ui";
 
-import Logo from "../assets/img/logo.png";
-import User from "../assets/img/user.png";
+import { type ThemeType, defaultTheme, isEmptyObj } from "../../../utils";
+import { Badge, Icon, Tag, Text } from "../../atoms";
 
-const Header = () => {
+export interface UserInfo {
+  /**
+   * Username
+   */
+  fullname: string;
+
+  /**
+   * User role
+   * */
+  role: string;
+
+  /**
+   * User Image
+   * */
+  imageURL?: string;
+}
+
+interface HeaderProps {
+  /**
+   * Brand Logo
+   * */
+  brandLogo: string;
+
+  /**
+   * User Details
+   * */
+  userInfo: UserInfo;
+}
+
+export const Header = ({ brandLogo, userInfo }: HeaderProps) => {
+  let theme = useTheme() as ThemeType;
+
+  /**
+   * Check if the component not wrapped with ThemeProvider
+   * If yes then use the defaultTheme
+   */
+  if (isEmptyObj(theme)) {
+    theme = defaultTheme;
+  }
+
   return (
     <HeaderStyled>
       <HeaderLogo>
-        <Image
+        <img
           alt=""
           className="header-logo"
           height={40}
-          src={Logo}
+          src={brandLogo}
           width={200}
         />
       </HeaderLogo>
       <HeaderInfo>
         <UserDetail>
-          <Text size="md" weight="semibold">
-            Ahmad Nizar
+          <Text size="md" weight="bold">
+            {userInfo.fullname}
           </Text>
-          <Tag>Admin</Tag>
+          <Tag>{userInfo.role}</Tag>
         </UserDetail>
         <UserImage>
-          <Image
+          <img
             alt=""
             className="usr-image"
             height={40}
-            src={User}
+            src={userInfo.imageURL}
             width={40}
           />
         </UserImage>
       </HeaderInfo>
-      <NotifSection>
+      <NotifSection theme={theme}>
         <Badge>
-          <Icon color={Colors.neutral.hard} name="bell-icon" size="md" />
+          <Icon color={theme.colors.neutral.hard} name="bell-icon" size="md" />
         </Badge>
       </NotifSection>
     </HeaderStyled>
@@ -57,7 +94,7 @@ const HeaderStyled = styled.div({
   justifyContent: "space-between",
   alignItems: "center",
   gap: "10px",
-  backgroundColor: "white",
+  backgroundColor: "#fff",
   boxShadow: "0px 3px 10px 0px rgba(188, 200, 231, 0.20)",
 });
 
@@ -99,19 +136,20 @@ const UserImage = styled.div({
   },
 });
 
-const NotifSection = styled.div({
-  width: "30px",
-  height: "30px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  borderRadius: "50%",
-  cursor: "pointer",
-  transition: "0.3s ease",
-
-  "&:hover": {
-    backgroundColor: Colors.primary.soft,
+const NotifSection = styled.div(
+  {
+    width: "30px",
+    height: "30px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "50%",
+    cursor: "pointer",
+    transition: "0.3s ease",
   },
-});
-
-export default Header;
+  ({ theme }: { theme: ThemeType }) => ({
+    "&:hover": {
+      backgroundColor: theme.colors.primary.soft,
+    },
+  }),
+);

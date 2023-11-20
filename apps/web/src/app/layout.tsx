@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
+import { AppContainer, type SidebarData, type UserInfo } from "ui";
 
-import Header from "../commons/components/Header";
-import Sidebar from "../commons/components/Sidebar";
 import ThemeProvider from "../container/ThemeProvider";
+import UserIMG from "../__commons/assets/img/user.png";
+import BrandLogo from "../__commons/assets/img/logo.png";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Nunito({
+  weight: ["300", "400", "600", "700"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,13 +23,62 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const userInfo: UserInfo = {
+    fullname: "Ahmad Nizar",
+    role: "Admin",
+    imageURL: `${UserIMG.src}`,
+  };
+
+  const sidebarData: SidebarData[] = [
+    {
+      id: 0,
+      title: "Dashboard",
+      icon: "home",
+      childs: [],
+    },
+    {
+      id: 1,
+      title: "Cashflow",
+      icon: "bank-notes",
+      childs: [
+        {
+          id: "1-0",
+          title: "Pengeluaran",
+        },
+        {
+          id: "1-1",
+          title: "Pemasukan",
+        },
+        {
+          id: "1-2",
+          title: "Hutang/Piutang",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Notes",
+      icon: "clipboard-document",
+      childs: [],
+    },
+    {
+      id: 3,
+      title: "Settings",
+      icon: "cog-6-tooth",
+      childs: [],
+    },
+  ];
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={nunito.className}>
         <ThemeProvider>
-          <Header />
-          <Sidebar />
-          {children}
+          <AppContainer
+            brandLogo={`${BrandLogo.src}`}
+            sidebarData={sidebarData}
+            userInfo={userInfo}
+          >
+            {children}
+          </AppContainer>
         </ThemeProvider>
       </body>
     </html>
