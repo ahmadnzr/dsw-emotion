@@ -67,7 +67,9 @@ const Sidebar = () => {
             }}
           >
             <Icon color="#0061A7" name={item.icon} type="filled" size="lg" />
-            <Text className="title">{item.title}</Text>
+            <Text className="title" weight="semibold">
+              {item.title}
+            </Text>
             {item.childs.length ? (
               <Icon
                 color="#0061A7"
@@ -79,7 +81,7 @@ const Sidebar = () => {
           {item.childs.map((child) => (
             <ListItem active={item.id === open} key={child.id}>
               <MenuItem>
-                <Text>{child.title}</Text>
+                <Text weight="semibold">{child.title}</Text>
               </MenuItem>
             </ListItem>
           ))}

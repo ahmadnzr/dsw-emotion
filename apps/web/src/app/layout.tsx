@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 
-import Header from "../commons/components/Header";
-import Sidebar from "../commons/components/Sidebar";
+import Header from "../__commons/components/Header";
+import Sidebar from "../__commons/components/Sidebar";
 import ThemeProvider from "../container/ThemeProvider";
 
 import "./globals.css";
