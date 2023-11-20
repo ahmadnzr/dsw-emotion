@@ -1,2 +1,3 @@
 // organisms exports
-export * from "./ExampleOrganisms";
+export * from "./Sidebar";
+export * from "./Header";
