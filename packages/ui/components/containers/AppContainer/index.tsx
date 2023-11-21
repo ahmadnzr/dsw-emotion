@@ -6,18 +6,15 @@ import styled from "@emotion/styled";
 import {
   Header,
   Sidebar,
-  type SidebarData,
-  type UserInfo,
+  type HeaderProps,
+  type SidebarProps,
 } from "../../organisms";
 
-interface AppContainerProps {
+interface AppContainerProps extends HeaderProps, SidebarProps {
   /**
    * children
    * */
   children: React.ReactNode;
-  brandLogo: string;
-  userInfo: UserInfo;
-  sidebarData: SidebarData[];
 }
 
 export const AppContainer = ({
@@ -25,11 +22,17 @@ export const AppContainer = ({
   brandLogo,
   userInfo,
   sidebarData,
+  onClickMenu,
+  activePath,
 }: AppContainerProps) => {
   return (
     <AppContainerStyled>
       <Header brandLogo={brandLogo} userInfo={userInfo} />
-      <Sidebar sidebarData={sidebarData} />
+      <Sidebar
+        activePath={activePath}
+        onClickMenu={onClickMenu}
+        sidebarData={sidebarData}
+      />
       <ContentWrapper>{children}</ContentWrapper>
     </AppContainerStyled>
   );
