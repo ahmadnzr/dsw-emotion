@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
-import { AppContainer, type SidebarData, type UserInfo } from "ui";
 
 import ThemeProvider from "../container/ThemeProvider";
-import UserIMG from "../__commons/assets/img/user.png";
-import BrandLogo from "../__commons/assets/img/logo.png";
 
 import "./globals.css";
 
@@ -19,67 +16,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  dashboard, // login,
 }: {
-  children: React.ReactNode;
+  dashboard: React.ReactNode;
+  // login: React.ReactNode;
 }) {
-  const userInfo: UserInfo = {
-    fullname: "Ahmad Nizar",
-    role: "Admin",
-    imageURL: `${UserIMG.src}`,
-  };
-
-  const sidebarData: SidebarData[] = [
-    {
-      id: 0,
-      title: "Dashboard",
-      icon: "home",
-      childs: [],
-    },
-    {
-      id: 1,
-      title: "Cashflow",
-      icon: "bank-notes",
-      childs: [
-        {
-          id: "1-0",
-          title: "Pengeluaran",
-        },
-        {
-          id: "1-1",
-          title: "Pemasukan",
-        },
-        {
-          id: "1-2",
-          title: "Hutang/Piutang",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Notes",
-      icon: "clipboard-document",
-      childs: [],
-    },
-    {
-      id: 3,
-      title: "Settings",
-      icon: "cog-6-tooth",
-      childs: [],
-    },
-  ];
+  // const loggedIn = false;
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <ThemeProvider>
-          <AppContainer
-            brandLogo={`${BrandLogo.src}`}
-            sidebarData={sidebarData}
-            userInfo={userInfo}
-          >
-            {children}
-          </AppContainer>
-        </ThemeProvider>
+        <ThemeProvider>{dashboard}</ThemeProvider>
       </body>
     </html>
   );

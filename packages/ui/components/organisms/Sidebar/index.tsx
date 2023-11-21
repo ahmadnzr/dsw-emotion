@@ -10,23 +10,31 @@ import { Icon, type IconName, Text } from "../../atoms";
 interface GroupChild {
   id: string;
   title: string;
+  path: string;
 }
 
 export interface SidebarData {
   id: number;
   title: string;
   icon: IconName;
+  path: string;
   childs: GroupChild[] | [];
 }
 
-interface SidebarProps {
+export interface SidebarProps {
   /**
    * Dynamic Sidebar Data
    * */
   sidebarData: SidebarData[];
+  activePath?: string;
+  onClickMenu: (path: string) => void;
 }
 
-export const Sidebar = ({ sidebarData }: SidebarProps) => {
+export const Sidebar = ({
+  sidebarData,
+  activePath,
+  onClickMenu,
+}: SidebarProps) => {
   let theme = useTheme() as ThemeType;
 
   /**
@@ -54,11 +62,18 @@ export const Sidebar = ({ sidebarData }: SidebarProps) => {
       {sidebarData.map((item) => (
         <GroupMenu key={item.id}>
           <MenuTitle
+            active={activePath === item.path}
             onClick={() => {
               onClickGroup(item.id);
+
+              if (!item.childs.length) {
+                onClickMenu(item.path);
+              }
             }}
+            theme={theme}
           >
             <Icon
+              className="menu-icon"
               color={theme.colors.primary.hard}
               name={item.icon}
               size="lg"
@@ -77,8 +92,16 @@ export const Sidebar = ({ sidebarData }: SidebarProps) => {
           </MenuTitle>
           {item.childs.map((child) => (
             <ListItem active={item.id === open} key={child.id}>
-              <MenuItem>
-                <Text weight="semibold">{child.title}</Text>
+              <MenuItem
+                active={activePath === child.path}
+                onClick={() => {
+                  onClickMenu(child.path);
+                }}
+                theme={theme}
+              >
+                <Text className="menu-child" weight="semibold">
+                  {child.title}
+                </Text>
               </MenuItem>
             </ListItem>
           ))}
@@ -115,10 +138,22 @@ const MenuTitle = styled.div(
       flex: 1,
     },
   },
-  ({ theme }: { theme: ThemeType }) => ({
-    "&:hover": {
-      backgroundColor: theme.colors.primary.soft,
-    },
+  ({ theme, active }: { theme: ThemeType; active: boolean }) => ({
+    ...(active
+      ? {
+          backgroundColor: theme.colors.primary.hard,
+          "& .title": {
+            color: theme.colors.white,
+          },
+          "& .menu-icon": {
+            color: `${theme.colors.white} !important`,
+          },
+        }
+      : {
+          "&:hover": {
+            backgroundColor: theme.colors.primary.soft,
+          },
+        }),
   }),
 );
 
@@ -136,9 +171,18 @@ const MenuItem = styled.div(
     cursor: "pointer",
     transition: "0.3s ease",
   },
-  ({ theme }: { theme: ThemeType }) => ({
-    "&:hover": {
-      backgroundColor: theme.colors.primary.soft,
-    },
+  ({ theme, active }: { theme: ThemeType; active: boolean }) => ({
+    ...(active
+      ? {
+          backgroundColor: theme.colors.primary.hard,
+          "& .menu-child": {
+            color: theme.colors.white,
+          },
+        }
+      : {
+          "&:hover": {
+            backgroundColor: theme.colors.primary.soft,
+          },
+        }),
   }),
 );

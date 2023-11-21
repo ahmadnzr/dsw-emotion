@@ -23,7 +23,7 @@ export interface UserInfo {
   imageURL?: string;
 }
 
-interface HeaderProps {
+export interface HeaderProps {
   /**
    * Brand Logo
    * */

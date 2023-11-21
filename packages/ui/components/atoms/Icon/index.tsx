@@ -75,6 +75,11 @@ export interface IconProps {
    * Icon color
    */
   color?: string;
+
+  /**
+   * Additional classname
+   */
+  className?: string;
 }
 
 export const Icon = ({
@@ -82,6 +87,7 @@ export const Icon = ({
   size = "md",
   type = "outline",
   color = defaultTheme.colors.neutral.medium,
+  className,
 }: IconProps) => {
   let theme = useTheme() as ThemeType;
 
@@ -118,64 +124,186 @@ export const Icon = ({
   if (type === "filled") {
     switch (name) {
       case "plus":
-        return <PlusIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <PlusIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "plus-circle":
-        return <PlusIconCirleSolid style={getIconStyle(color, size)} />;
+        return (
+          <PlusIconCirleSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "eye":
-        return <EyeIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <EyeIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "eye-slash":
-        return <EyeSlashIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <EyeSlashIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "building-library":
-        return <BuildingLibraryIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <BuildingLibraryIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "user":
-        return <UserIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <UserIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "lock-closed":
-        return <LockClosedIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <LockClosedIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "bell-icon":
-        return <BellIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <BellIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "chevron-down":
-        return <ChevronDownIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <ChevronDownIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "chevron-up":
-        return <ChevronUpIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <ChevronUpIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "home":
-        return <HomeIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <HomeIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "bank-notes":
-        return <BankNotesIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <BankNotesIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "clipboard-document":
-        return <ClipboardDocumentIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <ClipboardDocumentIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
       case "cog-6-tooth":
-        return <Cog6ToothIconSolid style={getIconStyle(color, size)} />;
+        return (
+          <Cog6ToothIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
     }
   }
 
   switch (name) {
     case "plus":
-      return <PlusIcon style={getIconStyle(color, size)} />;
+      return (
+        <PlusIcon className={className} style={getIconStyle(color, size)} />
+      );
     case "plus-circle":
-      return <PlusIconCirle style={getIconStyle(color, size)} />;
+      return (
+        <PlusIconCirle
+          className={className}
+          style={getIconStyle(color, size)}
+        />
+      );
     case "eye":
-      return <EyeIcon style={getIconStyle(color, size)} />;
+      return (
+        <EyeIcon className={className} style={getIconStyle(color, size)} />
+      );
     case "eye-slash":
-      return <EyeSlashIcon style={getIconStyle(color, size)} />;
+      return (
+        <EyeSlashIcon className={className} style={getIconStyle(color, size)} />
+      );
     case "building-library":
-      return <BuildingLibraryIcon style={getIconStyle(color, size)} />;
+      return (
+        <BuildingLibraryIcon
+          className={className}
+          style={getIconStyle(color, size)}
+        />
+      );
     case "user":
-      return <UserIcon style={getIconStyle(color, size)} />;
+      return (
+        <UserIcon className={className} style={getIconStyle(color, size)} />
+      );
     case "lock-closed":
-      return <LockClosedIcon style={getIconStyle(color, size)} />;
+      return (
+        <LockClosedIcon
+          className={className}
+          style={getIconStyle(color, size)}
+        />
+      );
     case "bell-icon":
-      return <BellIcon style={getIconStyle(color, size)} />;
+      return (
+        <BellIcon className={className} style={getIconStyle(color, size)} />
+      );
     case "chevron-down":
-      return <ChevronDownIcon style={getIconStyle(color, size)} />;
+      return (
+        <ChevronDownIcon
+          className={className}
+          style={getIconStyle(color, size)}
+        />
+      );
     case "chevron-up":
-      return <ChevronUpIcon style={getIconStyle(color, size)} />;
+      return (
+        <ChevronUpIcon
+          className={className}
+          style={getIconStyle(color, size)}
+        />
+      );
     case "home":
-      return <HomeIcon style={getIconStyle(color, size)} />;
+      return (
+        <HomeIcon className={className} style={getIconStyle(color, size)} />
+      );
     case "bank-notes":
-      return <BankNotesIcon style={getIconStyle(color, size)} />;
+      return (
+        <BankNotesIcon
+          className={className}
+          style={getIconStyle(color, size)}
+        />
+      );
     case "clipboard-document":
-      return <ClipboardDocumentIcon style={getIconStyle(color, size)} />;
+      return (
+        <ClipboardDocumentIcon
+          className={className}
+          style={getIconStyle(color, size)}
+        />
+      );
     case "cog-6-tooth":
-      return <Cog6ToothIcon style={getIconStyle(color, size)} />;
+      return (
+        <Cog6ToothIcon
+          className={className}
+          style={getIconStyle(color, size)}
+        />
+      );
   }
 };
