@@ -1,5 +1,11 @@
+import { PageWrapper } from "ui";
+
 const Summary = () => {
-  return <div>Hi Summary</div>;
+  return (
+    <PageWrapper pageTitle="Summary">
+      <div>Hi Summary</div>
+    </PageWrapper>
+  );
 };
 
 export default Summary;

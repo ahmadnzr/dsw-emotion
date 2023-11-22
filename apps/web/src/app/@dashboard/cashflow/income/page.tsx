@@ -1,5 +1,11 @@
+import { PageWrapper } from "ui";
+
 const Income = () => {
-  return <div>Hi Income</div>;
+  return (
+    <PageWrapper pageTitle="Income Cashflow">
+      <div>Hi Income</div>
+    </PageWrapper>
+  );
 };
 
 export default Income;

@@ -1,5 +1,11 @@
+import { PageWrapper } from "ui";
+
 const Settings = () => {
-  return <div>Hi Settings</div>;
+  return (
+    <PageWrapper pageTitle="Settings">
+      <div>Hi Settings</div>
+    </PageWrapper>
+  );
 };
 
 export default Settings;
