@@ -76,4 +76,28 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
     ],
   });
+
+  plop.setGenerator("templates", {
+    description: "Add new templates component",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "What is the name of the component?",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "components/templates/{{pascalCase name}}/index.tsx",
+        templateFile: "templates/component.hbs",
+      },
+      {
+        type: "append",
+        path: "components/templates/index.tsx",
+        pattern: /(?<insertion>\/\/ templates exports)/g,
+        template: 'export * from "./{{pascalCase name}}";',
+      },
+    ],
+  });
 }

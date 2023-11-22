@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
 import {
@@ -9,6 +10,8 @@ import {
   type HeaderProps,
   type SidebarProps,
 } from "../../organisms";
+import { Text } from "../../atoms";
+import { defaultTheme, isEmptyObj, type ThemeType } from "../../../utils";
 
 interface AppContainerProps extends HeaderProps, SidebarProps {
   /**
@@ -25,6 +28,12 @@ export const AppContainer = ({
   onClickMenu,
   activePath,
 }: AppContainerProps) => {
+  let theme = useTheme() as ThemeType;
+
+  if (isEmptyObj(theme)) {
+    theme = defaultTheme;
+  }
+
   return (
     <AppContainerStyled>
       <Header brandLogo={brandLogo} userInfo={userInfo} />
@@ -33,15 +42,20 @@ export const AppContainer = ({
         onClickMenu={onClickMenu}
         sidebarData={sidebarData}
       />
-      <ContentWrapper>{children}</ContentWrapper>
+      <PageWrapper>
+        <PageHeader>
+          <Text size="sm">{activePath}</Text>
+        </PageHeader>
+        <PageContent>{children}</PageContent>
+      </PageWrapper>
     </AppContainerStyled>
   );
 };
 
 const AppContainerStyled = styled.div({});
 
-const ContentWrapper = styled.main({
-  padding: "20px",
+const PageWrapper = styled.main({
+  padding: "5px 20px",
   position: "fixed",
   top: "80px",
   left: "200px",
@@ -49,3 +63,8 @@ const ContentWrapper = styled.main({
   bottom: 0,
   backgroundColor: "#F4F7FB",
 });
+
+const PageHeader = styled.div({});
+const PageContent = styled.div({}, ({ theme }: { theme: ThemeType }) => ({
+  marginTop: theme.spacing.xs,
+}));

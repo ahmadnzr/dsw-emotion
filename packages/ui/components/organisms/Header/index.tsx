@@ -84,12 +84,13 @@ export const Header = ({ brandLogo, userInfo }: HeaderProps) => {
 };
 
 const HeaderStyled = styled.div({
+  zIndex: 999,
   position: "fixed",
   height: "80px",
   top: 0,
   left: 0,
   right: 0,
-  padding: "0 60px 0 40px",
+  padding: "0 60px 0 20px",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",

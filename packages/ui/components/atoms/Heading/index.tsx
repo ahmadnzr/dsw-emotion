@@ -8,6 +8,7 @@ import {
   type HeadingType,
   defaultTheme,
   isEmptyObj,
+  type FontWeight,
 } from "../../../utils";
 
 interface HeadingProps {
@@ -27,6 +28,11 @@ interface HeadingProps {
   color?: string;
 
   /**
+   * Text color
+   */
+  weight?: FontWeight;
+
+  /**
    * Addtional css styling with classname
    */
   className?: string;
@@ -43,6 +49,7 @@ export const Heading = ({
   color,
   className,
   style,
+  weight = "normal",
 }: HeadingProps) => {
   let theme = useTheme() as ThemeType;
 
@@ -55,6 +62,7 @@ export const Heading = ({
     color: color || theme.colors.neutral.hard,
     style,
     size: theme.fonts.heading[level],
+    weight: theme.fonts.weight[weight],
   };
 
   // Cannot use autodocs from storybook when use this approach
@@ -78,12 +86,15 @@ const defaultStyles = {
 const defaultPropStyle = ({
   color,
   size,
+  weight,
 }: {
   color: string;
   size: string;
+  weight: number;
 }) => ({
   color,
   fontSize: size,
+  fontWeight: weight,
 });
 
 const H1Styled = styled.h1(
