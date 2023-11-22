@@ -7,10 +7,23 @@ import styled from '@emotion/styled'
 import { type ThemeType, defaultTheme, isEmptyObj } from '../../../utils'
 
 interface {{ pascalCase name }}Props {
+  /**
+  * React.children
+  **/
   children?: React.ReactNode;
+
+  /**
+  * Component styles
+  **/
+  style?: React.CSSProperties;
+
+  /**
+  * Component className
+  **/
+  className?: string;
 }
 
-export const {{ pascalCase name }} = ({ children }: {{pascalCase name}}Props) => {
+export const {{ pascalCase name }} = ({ children, style, className }: {{pascalCase name}}Props) => {
   let theme = useTheme() as ThemeType
 
   /**
@@ -22,7 +35,7 @@ export const {{ pascalCase name }} = ({ children }: {{pascalCase name}}Props) =>
   }
 
   return (
-    <{{ pascalCase name }}Styled>
+    <{{ pascalCase name }}Styled className={className} style={style}>
       <h1>{{ name }}</h1>
       {children}
     </{{ pascalCase name }}Styled>
