@@ -15,6 +15,9 @@ import HomeIcon from "@heroicons/react/24/outline/HomeIcon";
 import BankNotesIcon from "@heroicons/react/24/outline/BanknotesIcon";
 import ClipboardDocumentIcon from "@heroicons/react/24/outline/ClipboardDocumentIcon";
 import Cog6ToothIcon from "@heroicons/react/24/outline/Cog6ToothIcon";
+import DocumentDuplicateIcon from "@heroicons/react/24/outline/DocumentDuplicateIcon";
+import TrashIcon from "@heroicons/react/24/outline/TrashIcon";
+import PencilIcon from "@heroicons/react/24/outline/PencilIcon";
 /**
  * Solid Icon
  */
@@ -32,6 +35,9 @@ import HomeIconSolid from "@heroicons/react/24/solid/HomeIcon";
 import BankNotesIconSolid from "@heroicons/react/24/solid/BanknotesIcon";
 import ClipboardDocumentIconSolid from "@heroicons/react/24/solid/ClipboardDocumentIcon";
 import Cog6ToothIconSolid from "@heroicons/react/24/solid/Cog6ToothIcon";
+import DocumentDuplicateIconSolid from "@heroicons/react/24/solid/DocumentDuplicateIcon";
+import TrashIconSolid from "@heroicons/react/24/solid/TrashIcon";
+import PencilIconSolid from "@heroicons/react/24/solid/PencilIcon";
 
 import { type ThemeType, defaultTheme, isEmptyObj } from "../../../utils";
 
@@ -49,7 +55,10 @@ export type IconName =
   | "home"
   | "bank-notes"
   | "clipboard-document"
-  | "cog-6-tooth";
+  | "cog-6-tooth"
+  | "document-duplicate"
+  | "pencil"
+  | "trash";
 
 export type IconSize = "sm" | "md" | "lg";
 
@@ -221,6 +230,27 @@ export const Icon = ({
             style={getIconStyle(color, size)}
           />
         );
+      case "document-duplicate":
+        return (
+          <DocumentDuplicateIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
+      case "pencil":
+        return (
+          <PencilIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
+      case "trash":
+        return (
+          <TrashIconSolid
+            className={className}
+            style={getIconStyle(color, size)}
+          />
+        );
     }
   }
 
@@ -304,6 +334,21 @@ export const Icon = ({
           className={className}
           style={getIconStyle(color, size)}
         />
+      );
+    case "document-duplicate":
+      return (
+        <DocumentDuplicateIcon
+          className={className}
+          style={getIconStyle(color, size)}
+        />
+      );
+    case "pencil":
+      return (
+        <PencilIcon className={className} style={getIconStyle(color, size)} />
+      );
+    case "trash":
+      return (
+        <TrashIcon className={className} style={getIconStyle(color, size)} />
       );
   }
 };
