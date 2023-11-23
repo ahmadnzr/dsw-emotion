@@ -36,20 +36,18 @@ const theme: ThemeType = {
   fonts: {
     family: "",
     size: {
-      xs: "10px",
-      sm: "13px",
-      md: "15px",
-      lg: "20px",
+      xs: "0.6rem",
+      sm: "0.8rem",
+      md: "1rem",
+      lg: "1.2rem",
+      xl: "1.44rem",
+      xxl: "1.72rem",
     },
     weight: {
       bold: 700,
       semibold: 600,
       normal: 400,
       thin: 300,
-    },
-    heading: {
-      h1: "24px",
-      h2: "20px",
     },
   },
   spacing: {

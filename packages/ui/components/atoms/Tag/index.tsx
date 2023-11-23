@@ -24,6 +24,11 @@ interface TagProps {
   color?: string;
 
   /**
+   * Tag size
+   */
+  size?: "sm" | "md";
+
+  /**
    * Tag outlined
    */
   outlined?: boolean;
@@ -44,6 +49,7 @@ export const Tag = ({
   backgroundColor = defaultTheme.colors.primary.soft,
   color = defaultTheme.colors.primary.medium,
   outlined = false,
+  size = "md",
   style,
   className,
 }: TagProps) => {
@@ -63,12 +69,13 @@ export const Tag = ({
       className={className}
       color={color}
       outlined={outlined}
+      size={size}
       style={style}
     >
       <Text
         color={color}
-        size="xs"
-        style={{ display: "block" }}
+        size={size === "md" ? "sm" : "xs"}
+        style={{ lineHeight: 1 }}
         weight="semibold"
       >
         {children}
@@ -79,20 +86,26 @@ export const Tag = ({
 
 const TagStyled = styled.div(
   {
-    padding: "2px 8px",
-    borderRadius: "4px",
     width: "fit-content",
+    height: "fit-content",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "4px",
   },
   ({
     backgroundColor,
     outlined,
     color,
+    size,
   }: {
     backgroundColor: string;
     outlined: boolean;
     color: string;
+    size: "sm" | "md";
   }) => ({
     backgroundColor,
+    padding: size === "md" ? "4px 8px" : "2px 6px",
     border: `1px solid ${outlined ? color : backgroundColor}`,
   }),
 );

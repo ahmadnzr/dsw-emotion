@@ -59,9 +59,7 @@ export const Header = ({ brandLogo, userInfo }: HeaderProps) => {
       </HeaderLogo>
       <HeaderInfo>
         <UserDetail>
-          <Text size="md" weight="bold">
-            {userInfo.fullname}
-          </Text>
+          <Text weight="semibold">{userInfo.fullname}</Text>
           <Tag>{userInfo.role}</Tag>
         </UserDetail>
         <UserImage>

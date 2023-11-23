@@ -9,6 +9,7 @@ import {
   defaultTheme,
   isEmptyObj,
   type FontWeight,
+  FontSize,
 } from "../../../utils";
 
 interface HeadingProps {
@@ -21,6 +22,11 @@ interface HeadingProps {
    * Heading level
    */
   level?: HeadingType;
+
+  /**
+   * font size
+   */
+  size?: FontSize;
 
   /**
    * Text color
@@ -49,6 +55,7 @@ export const Heading = ({
   color,
   className,
   style,
+  size = "md",
   weight = "normal",
 }: HeadingProps) => {
   let theme = useTheme() as ThemeType;
@@ -61,7 +68,7 @@ export const Heading = ({
     className,
     color: color || theme.colors.neutral.hard,
     style,
-    size: theme.fonts.heading[level],
+    size: theme.fonts.size[size],
     weight: theme.fonts.weight[weight],
   };
 
@@ -76,6 +83,10 @@ export const Heading = ({
       return <H1Styled {...styles}>{children}</H1Styled>;
     case "h2":
       return <H2Styled {...styles}>{children}</H2Styled>;
+    case "h3":
+      return <H3Styled {...styles}>{children}</H3Styled>;
+    case "h4":
+      return <H4Styled {...styles}>{children}</H4Styled>;
   }
 };
 
@@ -105,6 +116,20 @@ const H1Styled = styled.h1(
 );
 
 const H2Styled = styled.h2(
+  {
+    ...defaultStyles,
+  },
+  defaultPropStyle,
+);
+
+const H3Styled = styled.h3(
+  {
+    ...defaultStyles,
+  },
+  defaultPropStyle,
+);
+
+const H4Styled = styled.h4(
   {
     ...defaultStyles,
   },
