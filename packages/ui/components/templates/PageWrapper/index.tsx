@@ -48,7 +48,7 @@ export const PageWrapper = ({
   return (
     <PageWrapperStyled className={className} style={style}>
       <PageHeader>
-        <Heading level="h2" weight="semibold">
+        <Heading level="h2" size="xl" weight="semibold">
           {pageTitle}
         </Heading>
       </PageHeader>
