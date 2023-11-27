@@ -74,7 +74,11 @@ export const Header = ({ brandLogo, userInfo }: HeaderProps) => {
       </HeaderInfo>
       <NotifSection theme={theme}>
         <Badge>
-          <Icon color={theme.colors.neutral.hard} name="bell-icon" size="md" />
+          <Icon
+            color={theme.colors.neutral["400"]}
+            name="bell-icon"
+            size="md"
+          />
         </Badge>
       </NotifSection>
     </HeaderStyled>
@@ -148,7 +152,7 @@ const NotifSection = styled.div(
   },
   ({ theme }: { theme: ThemeType }) => ({
     "&:hover": {
-      backgroundColor: theme.colors.primary.soft,
+      backgroundColor: theme.colors.primary["200"],
     },
   }),
 );

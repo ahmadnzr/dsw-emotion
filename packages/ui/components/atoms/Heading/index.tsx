@@ -6,10 +6,11 @@ import styled from "@emotion/styled";
 import {
   type ThemeType,
   type HeadingType,
+  type FontWeight,
+  type FontSize,
   defaultTheme,
   isEmptyObj,
-  type FontWeight,
-  FontSize,
+  Colors,
 } from "../../../utils";
 
 interface HeadingProps {
@@ -46,13 +47,13 @@ interface HeadingProps {
   /**
    * Addtional css styling with style (inline css)
    */
-  style?: Record<string, number | string>;
+  style?: React.CSSProperties;
 }
 
 export const Heading = ({
   children,
   level = "h1",
-  color,
+  color = Colors.neutral[400],
   className,
   style,
   size = "md",
@@ -66,7 +67,7 @@ export const Heading = ({
 
   const styles = {
     className,
-    color: color || theme.colors.neutral.hard,
+    color,
     style,
     size: theme.fonts.size[size],
     weight: theme.fonts.weight[weight],

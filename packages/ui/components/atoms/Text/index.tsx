@@ -68,7 +68,7 @@ export const Text = ({
     return (
       <TextStyleSpan
         className={className}
-        color={color || theme.colors.neutral.hard}
+        color={color || theme.colors.neutral["400"]}
         size={theme.fonts.size[size]}
         style={style}
         weight={theme.fonts.weight[weight]}
@@ -81,7 +81,7 @@ export const Text = ({
   return (
     <TextStyles
       className={className}
-      color={color || theme.colors.neutral.hard}
+      color={color || theme.colors.neutral["400"]}
       size={theme.fonts.size[size]}
       style={style}
       weight={theme.fonts.weight[weight]}

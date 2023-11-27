@@ -89,14 +89,20 @@ export interface IconProps {
    * Additional classname
    */
   className?: string;
+
+  /**
+   * Additional style
+   */
+  style?: React.CSSProperties;
 }
 
 export const Icon = ({
   name,
   size = "md",
   type = "outline",
-  color = defaultTheme.colors.neutral.medium,
+  color = defaultTheme.colors.neutral["300"],
   className,
+  style,
 }: IconProps) => {
   let theme = useTheme() as ThemeType;
 
@@ -108,7 +114,10 @@ export const Icon = ({
     theme = defaultTheme;
   }
 
-  const getIconStyle = (icColor: string, icSize: IconSize) => {
+  const getIconStyle = (
+    icColor: string,
+    icSize: IconSize,
+  ): React.CSSProperties => {
     const iconSize: Record<IconSize, { height: string; width: string }> = {
       sm: {
         width: "12px",
@@ -127,6 +136,7 @@ export const Icon = ({
     return {
       color: icColor,
       ...iconSize[icSize],
+      ...style,
     };
   };
 

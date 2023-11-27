@@ -46,8 +46,8 @@ interface TagProps {
 
 export const Tag = ({
   children = "Text",
-  backgroundColor = defaultTheme.colors.primary.soft,
-  color = defaultTheme.colors.primary.medium,
+  backgroundColor = defaultTheme.colors.primary["200"],
+  color = defaultTheme.colors.primary["300"],
   outlined = false,
   size = "md",
   style,

@@ -138,7 +138,9 @@ export const Input = forwardRef(function MyInput(
             <EyeButton onClick={handleOnEyeButton} theme={theme}>
               <Icon
                 color={
-                  error ? theme.colors.error.hard : theme.colors.neutral.medium
+                  error
+                    ? theme.colors.error["300"]
+                    : theme.colors.neutral["400"]
                 }
                 name={openEye ? "eye" : "eye-slash"}
                 size="md"
@@ -148,7 +150,11 @@ export const Input = forwardRef(function MyInput(
         ) : null}
       </InputContainer>
       {error ? (
-        <Text className="error-text" color={theme.colors.error.hard} size="xs">
+        <Text
+          className="error-text"
+          color={theme.colors.error["300"]}
+          size="xs"
+        >
           {`* ${error}`}
         </Text>
       ) : null}
@@ -193,13 +199,13 @@ const InputContainer = styled.div(
       padding: `${theme.spacing.sm}px ${theme.spacing.md + 2}px`,
       borderRadius: `${theme.spacing.md}px`,
       border: `1px solid ${
-        isError ? theme.colors.error.hard : theme.colors.neutral.medium
+        isError ? theme.colors.error["300"] : theme.colors.neutral["300"]
       }`,
-      color: theme.colors.neutral.medium,
+      color: theme.colors.neutral["400"],
 
       "&:hover": {
         cursor: "text",
-        border: `1px solid ${theme.colors.primary.hard}`,
+        border: `1px solid ${theme.colors.primary["400"]}`,
       },
 
       ...(leftIcon !== undefined
@@ -211,8 +217,8 @@ const InputContainer = styled.div(
                 {
                   name: leftIcon,
                   color: isError
-                    ? theme.colors.error.hard
-                    : theme.colors.neutral.medium,
+                    ? theme.colors.error["300"]
+                    : theme.colors.neutral["400"],
                 },
               )}) no-repeat center`,
             },
@@ -234,12 +240,12 @@ const InputStyled = styled.input(
   },
   ({ theme, isError }: { theme: ThemeType; isError: boolean }) => ({
     fontSize: theme.fonts.size.md,
-    color: isError ? theme.colors.error.hard : theme.colors.neutral.hard,
+    color: isError ? theme.colors.error["300"] : theme.colors.neutral["400"],
     letterSpacing: "0.45px",
     fontWeight: theme.fonts.weight.normal,
 
     "&::placeholder": {
-      color: theme.colors.neutral.medium,
+      color: theme.colors.neutral["300"],
     },
 
     "&::before": {
@@ -269,7 +275,7 @@ const EyeButton = styled.div(
   },
   ({ theme }: { theme: ThemeType }) => ({
     "&:hover": {
-      backgroundColor: theme.colors.primary.soft,
+      backgroundColor: theme.colors.primary["200"],
     },
   }),
 );

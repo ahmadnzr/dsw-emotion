@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { Inter } from "next/font/google";
 
 import ThemeProvider from "../container/ThemeProvider";
 
 import "./globals.css";
 
-const nunito = Nunito({
+const inter = Inter({
   weight: ["300", "400", "600", "700"],
   subsets: ["latin"],
 });
@@ -24,7 +24,7 @@ export default function RootLayout({
   // const loggedIn = false;
   return (
     <html lang="en">
-      <body className={nunito.className}>
+      <body className={inter.className}>
         <ThemeProvider>{dashboard}</ThemeProvider>
       </body>
     </html>

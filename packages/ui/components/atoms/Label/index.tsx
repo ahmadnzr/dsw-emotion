@@ -37,7 +37,7 @@ interface LabelProps {
   /**
    * Addtional css styling with style (inline css)
    * */
-  style?: Record<string, number | string>;
+  style?: React.CSSProperties;
 }
 
 export const Label = ({
@@ -57,7 +57,7 @@ export const Label = ({
   return (
     <LabelStyled
       className={className}
-      color={color || theme.colors.neutral.hard}
+      color={color || theme.colors.neutral["400"]}
       htmlFor={htmlFor}
       size={theme.fonts.size[size]}
       style={style}
