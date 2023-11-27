@@ -1,2 +1,2 @@
 // molecules exports
-export * from "./ExampleMolecules";
+export * from "./Button";
