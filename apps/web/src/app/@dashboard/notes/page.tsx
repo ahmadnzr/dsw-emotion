@@ -1,9 +1,20 @@
 "use client";
 
+import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Button, Colors, Heading, Icon, PageWrapper, Tag, Text } from "ui";
+import {
+  Button,
+  Heading,
+  Icon,
+  PageWrapper,
+  Tag,
+  Text,
+  type ThemeType,
+} from "ui";
 
 const Notes = () => {
+  const theme = useTheme() as ThemeType;
+
   return (
     <PageWrapper pageTitle="Notes">
       <NoteContainer>
@@ -11,7 +22,7 @@ const Notes = () => {
           <NoteCard key={item}>
             <NoteHeader>
               <HeaderDetail>
-                <Text color={Colors.neutral.medium} size="sm">
+                <Text color={theme.colors.neutral["300"]} size="sm">
                   10 Feb 2024
                 </Text>
                 <TagContainer>
@@ -36,16 +47,24 @@ const Notes = () => {
               <ActionContainer>
                 <IconContainer>
                   <Icon
-                    color={Colors.primary.dark}
+                    color={theme.colors.primary["400"]}
                     name="document-duplicate"
                     size="sm"
                   />
                 </IconContainer>
                 <IconContainer>
-                  <Icon color={Colors.primary.dark} name="pencil" size="sm" />
+                  <Icon
+                    color={theme.colors.primary["400"]}
+                    name="pencil"
+                    size="sm"
+                  />
                 </IconContainer>
                 <IconContainer>
-                  <Icon color={Colors.error.medium} name="trash" size="sm" />
+                  <Icon
+                    color={theme.colors.error["300"]}
+                    name="trash"
+                    size="sm"
+                  />
                 </IconContainer>
               </ActionContainer>
               <Button variant="text">Lihat Detail</Button>

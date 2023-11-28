@@ -39,7 +39,7 @@ export const Badge = ({
   className,
   children,
   dotPosition = "top-right",
-  dotColor = Colors.error.hard,
+  dotColor = Colors.error["400"],
 }: BadgeProps) => {
   let theme = useTheme() as ThemeType;
 

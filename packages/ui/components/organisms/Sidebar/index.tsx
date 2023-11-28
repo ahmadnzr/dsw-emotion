@@ -74,7 +74,7 @@ export const Sidebar = ({
           >
             <Icon
               className="menu-icon"
-              color={theme.colors.primary.hard}
+              color={theme.colors.primary["400"]}
               name={item.icon}
               size="lg"
               type="filled"
@@ -84,7 +84,7 @@ export const Sidebar = ({
             </Text>
             {item.childs.length ? (
               <Icon
-                color={theme.colors.primary.hard}
+                color={theme.colors.primary["400"]}
                 name={item.id === open ? "chevron-up" : "chevron-down"}
                 size="sm"
               />
@@ -141,17 +141,17 @@ const MenuTitle = styled.div(
   ({ theme, active }: { theme: ThemeType; active: boolean }) => ({
     ...(active
       ? {
-          backgroundColor: theme.colors.primary.hard,
+          backgroundColor: theme.colors.primary["400"],
           "& .title": {
-            color: theme.colors.white,
+            color: theme.colors.neutral["100"],
           },
           "& .menu-icon": {
-            color: `${theme.colors.white} !important`,
+            color: `${theme.colors.neutral["100"]} !important`,
           },
         }
       : {
           "&:hover": {
-            backgroundColor: theme.colors.primary.soft,
+            backgroundColor: theme.colors.primary["200"],
           },
         }),
   }),
@@ -174,14 +174,14 @@ const MenuItem = styled.div(
   ({ theme, active }: { theme: ThemeType; active: boolean }) => ({
     ...(active
       ? {
-          backgroundColor: theme.colors.primary.hard,
+          backgroundColor: theme.colors.primary["400"],
           "& .menu-child": {
-            color: theme.colors.white,
+            color: theme.colors.neutral["100"],
           },
         }
       : {
           "&:hover": {
-            backgroundColor: theme.colors.primary.soft,
+            backgroundColor: theme.colors.primary["200"],
           },
         }),
   }),

@@ -12,6 +12,12 @@ import {
   defaultTheme,
 } from "../../../utils";
 
+/**
+ * TODO: refactor text
+ * 1. more readable code
+ * 2. explore how to use Text.Span, Text.Paragraph
+ * */
+
 interface TextProps {
   /**
    * Content of the text
@@ -68,7 +74,7 @@ export const Text = ({
     return (
       <TextStyleSpan
         className={className}
-        color={color || theme.colors.neutral.hard}
+        color={color || theme.colors.neutral["400"]}
         size={theme.fonts.size[size]}
         style={style}
         weight={theme.fonts.weight[weight]}
@@ -81,7 +87,7 @@ export const Text = ({
   return (
     <TextStyles
       className={className}
-      color={color || theme.colors.neutral.hard}
+      color={color || theme.colors.neutral["400"]}
       size={theme.fonts.size[size]}
       style={style}
       weight={theme.fonts.weight[weight]}
