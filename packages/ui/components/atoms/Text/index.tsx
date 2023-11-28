@@ -12,6 +12,12 @@ import {
   defaultTheme,
 } from "../../../utils";
 
+/**
+ * TODO: refactor text
+ * 1. more readable code
+ * 2. explore how to use Text.Span, Text.Paragraph
+ * */
+
 interface TextProps {
   /**
    * Content of the text
