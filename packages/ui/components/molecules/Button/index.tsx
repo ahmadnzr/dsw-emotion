@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import { useTheme } from "@emotion/react";
+import { type CSSObject, useTheme } from "@emotion/react";
 
 import { defaultTheme, isEmptyObj, type ThemeType } from "../../../utils";
 
@@ -14,7 +14,7 @@ type ButtonShape = "round" | "circle";
 
 interface ButtonProps {
   /**
-   * Label for the button
+   * Text on **`button`**
    */
   children?: React.ReactNode;
 
@@ -30,9 +30,14 @@ interface ButtonProps {
   disabled?: boolean;
 
   /**
-   * Button type
+   * Event when button click
    */
-  type?: ButtonType;
+  onClick?: () => void;
+
+  /**
+   * Button Shape
+   */
+  shape?: ButtonShape;
 
   /**
    * Button Size
@@ -40,9 +45,14 @@ interface ButtonProps {
   size?: ButtonSize;
 
   /**
-   * Button Shape
+   * Custom styling with style
    */
-  shape?: ButtonShape;
+  style?: React.CSSProperties;
+
+  /**
+   * Button type
+   */
+  type?: ButtonType;
 
   /**
    * Button Shape
@@ -58,11 +68,6 @@ interface ButtonProps {
    * Button width
    */
   width?: ButtonWidth;
-
-  /**
-   * Event when button click
-   */
-  onClick?: () => void;
 }
 
 export const Button = ({
@@ -71,6 +76,7 @@ export const Button = ({
   disabled = false,
   size = "md",
   shape,
+  style,
   type = "button",
   variant = "contained",
   onClick,
@@ -89,6 +95,7 @@ export const Button = ({
       onClick={onClick}
       shape={shape}
       size={size}
+      style={style}
       theme={theme}
       type={type}
       variant={variant}
@@ -140,6 +147,7 @@ const ButtonStyled = styled.button(
               borderRadius: "50%",
               paddingInlineStart: 0,
               paddingInlineEnd: 0,
+              overflow: "hidden",
             }
           : {}),
         ...(!shape ? { borderRadius: "4px" } : {}),
@@ -152,6 +160,7 @@ const ButtonStyled = styled.button(
               borderRadius: "50%",
               paddingInlineStart: 0,
               paddingInlineEnd: 0,
+              overflow: "hidden",
             }
           : {}),
         ...(!shape ? { borderRadius: "6px" } : {}),
@@ -164,16 +173,14 @@ const ButtonStyled = styled.button(
               borderRadius: "50%",
               paddingInlineStart: 0,
               paddingInlineEnd: 0,
+              overflow: "hidden",
             }
           : {}),
         ...(!shape ? { borderRadius: "8px" } : {}),
       },
     };
 
-    const btnSizeStyle: Record<
-      ButtonSize,
-      React.CSSProperties | Record<string, React.CSSProperties>
-    > = {
+    const btnSizeStyle: Record<ButtonSize, CSSObject> = {
       sm: {
         height: "24px",
         padding: "0 7px",
@@ -186,15 +193,12 @@ const ButtonStyled = styled.button(
       },
       lg: {
         height: "40px",
-        padding: "6.428571428571429px 15px",
+        padding: "6px 15px",
         fontSize: "16px",
       },
     };
 
-    const btnVariantStyle: Record<
-      ButtonVariant,
-      React.CSSProperties | Record<string, React.CSSProperties>
-    > = {
+    const btnVariantStyle: Record<ButtonVariant, CSSObject> = {
       contained: {
         color: theme.colors.neutral["100"],
         backgroundColor: theme.colors.primary["400"],
@@ -207,6 +211,10 @@ const ButtonStyled = styled.button(
         "&:active": {
           backgroundColor: theme.colors.primary["500"],
         },
+        "&:disabled": {
+          backgroundColor: theme.colors.neutral["300"],
+          cursor: "initial",
+        },
       },
       outlined: {
         color: theme.colors.primary["400"],
@@ -218,15 +226,38 @@ const ButtonStyled = styled.button(
         "&:hover": {
           backgroundColor: theme.colors.primary["100"],
         },
+        "&:active": {
+          backgroundColor: theme.colors.primary["200"],
+        },
+        "&:disabled": {
+          cursor: "initial",
+          border: `1px solid ${theme.colors.neutral["300"]}`,
+          color: theme.colors.neutral["300"],
+          backgroundColor: theme.colors.neutral["100"],
+          "& .btn-icon > svg": {
+            color: `${theme.colors.neutral["300"]} !important`,
+          },
+        },
       },
       text: {
-        color: theme.colors.neutral["400"],
+        color: theme.colors.primary["500"],
         backgroundColor: "transparent",
         "& .btn-icon > svg": {
-          color: `${theme.colors.neutral["400"]} !important`,
+          color: `${theme.colors.primary["500"]} !important`,
         },
         "&:hover": {
           backgroundColor: theme.colors.primary["100"],
+        },
+        "&:active": {
+          backgroundColor: theme.colors.primary["200"],
+        },
+        "&:disabled": {
+          cursor: "initial",
+          color: theme.colors.neutral["300"],
+          backgroundColor: theme.colors.neutral["100"],
+          "& .btn-icon > svg": {
+            color: `${theme.colors.neutral["300"]} !important`,
+          },
         },
       },
     };
@@ -254,4 +285,6 @@ const ButtonStyled = styled.button(
  * 1. difference icon size base on button size
  * 2. more readable code
  * 3. support for full width button
+ * 4. get spacing from theme
+ * 5. error button
  * */
