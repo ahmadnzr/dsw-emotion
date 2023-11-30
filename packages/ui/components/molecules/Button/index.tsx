@@ -86,7 +86,6 @@ export const Button = ({
   if (isEmptyObj(theme)) {
     theme = defaultTheme;
   }
-
   return (
     <ButtonStyled
       className={className}
@@ -115,6 +114,7 @@ const ButtonStyled = styled.button(
     justifyContent: "center",
     boxSizing: "border-box",
     fontWeight: "400",
+    overflow: "hidden",
     whiteSpace: "nowrap",
     textAlign: "center",
     border: "1px solid transparent",
