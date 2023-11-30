@@ -3,15 +3,15 @@ import { type ColorType, type ThemeType } from "../types";
 const Colors: ColorType = {
   primary: {
     100: "#e6f7ff",
-    200: "#91d5ff",
+    200: "#bae7ff",
     300: "#1890ff",
     400: "#096dd9",
     500: "#0050b3",
   },
   neutral: {
     100: "#ffffff",
-    200: "#f5f5f5",
-    300: "#d9d9d9",
+    200: "#d9d9d9",
+    300: "#8c8c8c",
     400: "#262626",
     500: "#141414",
   },

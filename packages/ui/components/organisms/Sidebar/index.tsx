@@ -79,9 +79,7 @@ export const Sidebar = ({
               size="lg"
               type="filled"
             />
-            <Text className="title" weight="semibold">
-              {item.title}
-            </Text>
+            <Text className="title">{item.title}</Text>
             {item.childs.length ? (
               <Icon
                 color={theme.colors.primary["400"]}
@@ -99,9 +97,7 @@ export const Sidebar = ({
                 }}
                 theme={theme}
               >
-                <Text className="menu-child" weight="semibold">
-                  {child.title}
-                </Text>
+                <Text className="menu-child">{child.title}</Text>
               </MenuItem>
             </ListItem>
           ))}
@@ -151,7 +147,7 @@ const MenuTitle = styled.div(
         }
       : {
           "&:hover": {
-            backgroundColor: theme.colors.primary["200"],
+            backgroundColor: theme.colors.primary["100"],
           },
         }),
   }),
@@ -181,7 +177,7 @@ const MenuItem = styled.div(
         }
       : {
           "&:hover": {
-            backgroundColor: theme.colors.primary["200"],
+            backgroundColor: theme.colors.primary["100"],
           },
         }),
   }),
