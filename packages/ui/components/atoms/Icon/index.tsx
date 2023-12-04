@@ -2,7 +2,7 @@
 
 import { useTheme } from "@emotion/react";
 import PlusIcon from "@heroicons/react/24/outline/PlusIcon";
-import PlusIconCirle from "@heroicons/react/24/outline/PlusCircleIcon";
+import PlusCircleIcon from "@heroicons/react/24/outline/PlusCircleIcon";
 import EyeIcon from "@heroicons/react/24/outline/EyeIcon";
 import EyeSlashIcon from "@heroicons/react/24/outline/EyeSlashIcon";
 import BuildingLibraryIcon from "@heroicons/react/24/outline/BuildingLibraryIcon";
@@ -271,7 +271,7 @@ export const Icon = ({
       );
     case "plus-circle":
       return (
-        <PlusIconCirle
+        <PlusCircleIcon
           className={className}
           style={getIconStyle(color, size)}
         />
