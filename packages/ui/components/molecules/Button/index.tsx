@@ -57,7 +57,7 @@ interface ButtonProps {
   /**
    * Button Shape
    */
-  icon?: React.ReactNode;
+  icon?: React.JSX.Element;
 
   /**
    * Button variant

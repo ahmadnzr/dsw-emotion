@@ -56,7 +56,9 @@ const AppContainerStyled = styled.div({});
 
 const PageWrapper = styled.main({
   padding: "5px 20px",
-  position: "fixed",
+  position: "absolute",
+  minHeight: "calc(100% - 80px)",
+  height: "fit-content",
   top: "80px",
   left: "200px",
   right: 0,

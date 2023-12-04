@@ -108,6 +108,7 @@ export const Sidebar = ({
 };
 
 const SidebarStyled = styled.div({
+  zIndex: 99,
   width: "200px",
   position: "fixed",
   top: "80px",
