@@ -72,22 +72,16 @@ export const Tag = ({
       size={size}
       style={style}
     >
-      <Text
-        color={color}
-        size={size === "md" ? "sm" : "xs"}
-        style={{ lineHeight: 1 }}
-        weight="semibold"
-      >
+      <Text color={color} size={size === "md" ? "sm" : "xs"} weight="semibold">
         {children}
       </Text>
     </TagStyled>
   );
 };
 
-const TagStyled = styled.div(
+const TagStyled = styled.span(
   {
     width: "fit-content",
-    height: "fit-content",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
