@@ -75,9 +75,9 @@ export const Header = ({ brandLogo, userInfo }: HeaderProps) => {
       <NotifSection theme={theme}>
         <Badge>
           <Icon
-            color={theme.colors.neutral["400"]}
+            color={theme.colors.primary["500"]}
             name="bell-icon"
-            size="md"
+            size="lg"
           />
         </Badge>
       </NotifSection>
@@ -141,8 +141,8 @@ const UserImage = styled.div({
 
 const NotifSection = styled.div(
   {
-    width: "30px",
-    height: "30px",
+    width: "35px",
+    height: "35px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
