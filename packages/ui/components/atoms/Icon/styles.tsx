@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import { type FC, type Ref, type SVGProps, type CSSProperties } from "react";
+import styled from "@emotion/styled";
 
 import { type IconStyleProps, type IconSize } from ".";
 
@@ -24,13 +24,13 @@ export const getIconStyles = (params: IconStyleProps): CSSProperties => {
   };
 };
 
-type IconProps = SVGProps<SVGSVGElement> & {
+export type IconSVGProps = SVGProps<SVGSVGElement> & {
   title?: string;
   titleId?: string;
   ref?: Ref<SVGSVGElement>;
 };
 
-export const createStyledIcon = (IconComponent: FC<IconProps>) =>
+export const createStyledIcon = (IconComponent: FC<IconSVGProps>) =>
   styled(IconComponent)((props: IconStyleProps) => ({
     ...getIconStyles(props),
   }));
