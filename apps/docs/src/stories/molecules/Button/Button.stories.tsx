@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "ui/components/molecules/Button";
-import { Icon as ButtonIcon } from "ui/components/atoms/Icon";
 
 const meta = {
   title: "Components/Molecules/Button",
@@ -8,7 +7,7 @@ const meta = {
   parameters: {},
   tags: ["autodocs"],
   argTypes: {
-    icon: { control: "React.ReactNode" },
+    leftIcon: { control: "select" },
   },
 } satisfies Meta<typeof Button>;
 
@@ -20,6 +19,7 @@ export const Contained: Story = {
   args: {
     children: "Submit",
     type: "button",
+    leftIcon: "plus-circle",
     variant: "contained",
   },
 };
@@ -40,12 +40,20 @@ export const Text: Story = {
   },
 };
 
+export const Link: Story = {
+  args: {
+    children: "Submit",
+    type: "button",
+    variant: "link",
+  },
+};
+
 export const Rounded: Story = {
   args: {
     children: "Submit",
     type: "button",
     variant: "contained",
-    icon: <ButtonIcon name="trash" />,
+    leftIcon: "plus-circle",
     size: "lg",
     shape: "round",
   },
@@ -56,14 +64,14 @@ export const Icon: Story = {
     children: "Submit",
     type: "button",
     variant: "contained",
-    icon: <ButtonIcon name="trash" />,
+    leftIcon: "trash",
     size: "lg",
   },
 };
 
 export const CircleIcon: Story = {
   args: {
-    icon: <ButtonIcon name="trash" />,
+    leftIcon: "plus-circle",
     type: "button",
     variant: "contained",
     shape: "circle",
