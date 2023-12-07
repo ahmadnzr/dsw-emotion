@@ -1,45 +1,47 @@
 "use client";
 
 import { useTheme } from "@emotion/react";
-import PlusIcon from "@heroicons/react/24/outline/PlusIcon";
-import PlusCircleIcon from "@heroicons/react/24/outline/PlusCircleIcon";
-import EyeIcon from "@heroicons/react/24/outline/EyeIcon";
-import EyeSlashIcon from "@heroicons/react/24/outline/EyeSlashIcon";
-import BuildingLibraryIcon from "@heroicons/react/24/outline/BuildingLibraryIcon";
-import UserIcon from "@heroicons/react/24/outline/UserIcon";
-import LockClosedIcon from "@heroicons/react/24/outline/LockClosedIcon";
-import BellIcon from "@heroicons/react/24/outline/BellIcon";
-import ChevronDownIcon from "@heroicons/react/24/outline/ChevronDownIcon";
-import ChevronUpIcon from "@heroicons/react/24/outline/ChevronUpIcon";
-import HomeIcon from "@heroicons/react/24/outline/HomeIcon";
-import BankNotesIcon from "@heroicons/react/24/outline/BanknotesIcon";
-import ClipboardDocumentIcon from "@heroicons/react/24/outline/ClipboardDocumentIcon";
-import Cog6ToothIcon from "@heroicons/react/24/outline/Cog6ToothIcon";
-import DocumentDuplicateIcon from "@heroicons/react/24/outline/DocumentDuplicateIcon";
-import TrashIcon from "@heroicons/react/24/outline/TrashIcon";
-import PencilIcon from "@heroicons/react/24/outline/PencilIcon";
-/**
- * Solid Icon
- */
-import PlusIconSolid from "@heroicons/react/24/solid/PlusIcon";
-import PlusIconCirleSolid from "@heroicons/react/24/solid/PlusCircleIcon";
-import EyeIconSolid from "@heroicons/react/24/solid/EyeIcon";
-import EyeSlashIconSolid from "@heroicons/react/24/solid/EyeSlashIcon";
-import BuildingLibraryIconSolid from "@heroicons/react/24/solid/BuildingLibraryIcon";
-import UserIconSolid from "@heroicons/react/24/solid/UserIcon";
-import LockClosedIconSolid from "@heroicons/react/24/solid/LockClosedIcon";
-import BellIconSolid from "@heroicons/react/24/solid/BellIcon";
-import ChevronDownIconSolid from "@heroicons/react/24/solid/ChevronDownIcon";
-import ChevronUpIconSolid from "@heroicons/react/24/solid/ChevronUpIcon";
-import HomeIconSolid from "@heroicons/react/24/solid/HomeIcon";
-import BankNotesIconSolid from "@heroicons/react/24/solid/BanknotesIcon";
-import ClipboardDocumentIconSolid from "@heroicons/react/24/solid/ClipboardDocumentIcon";
-import Cog6ToothIconSolid from "@heroicons/react/24/solid/Cog6ToothIcon";
-import DocumentDuplicateIconSolid from "@heroicons/react/24/solid/DocumentDuplicateIcon";
-import TrashIconSolid from "@heroicons/react/24/solid/TrashIcon";
-import PencilIconSolid from "@heroicons/react/24/solid/PencilIcon";
 
 import { type ThemeType, defaultTheme, isEmptyObj } from "../../../utils";
+
+import {
+  BankNotesIconStyled,
+  BellIconStyled,
+  BuildingLibraryIconStyled,
+  ChevronDownIconStyled,
+  ChevronUpIconStyled,
+  ClipboardDocumentIconStyled,
+  Cog6ToothIconStyled,
+  DocumentDuplicateIconStyled,
+  EyeIconStyled,
+  EyeSlashIconStyled,
+  HomeIconStyled,
+  LockClosedIconStyled,
+  PencilIconStyled,
+  PlusCircleIconStyled,
+  PlusIconStyled,
+  TrashIconStyled,
+  UserIconStyled,
+} from "./outlined";
+import {
+  BankNotesIconStyled as BankNotesIconSolidStyled,
+  BellIconStyled as BellIconSolidStyled,
+  BuildingLibraryIconStyled as BuildingLibraryIconSolidStyled,
+  ChevronDownIconStyled as ChevronDownIconSolidStyled,
+  ChevronUpIconStyled as ChevronUpIconSolidStyled,
+  ClipboardDocumentIconStyled as ClipboardDocumentIconSolidStyled,
+  Cog6ToothIconStyled as Cog6ToothIconSolidStyled,
+  DocumentDuplicateIconStyled as DocumentDuplicateIconSolidStyled,
+  EyeIconStyled as EyeIconSolidStyled,
+  EyeSlashIconStyled as EyeSlashIconSolidStyled,
+  HomeIconStyled as HomeIconSolidStyled,
+  LockClosedIconStyled as LockClosedIconSolidStyled,
+  PencilIconStyled as PencilIconSolidStyled,
+  PlusCircleIconStyled as PlusCircleIconSolidStyled,
+  PlusIconStyled as PlusIconSolidStyled,
+  TrashIconStyled as TrashIconSolidStyled,
+  UserIconStyled as UserIconSolidStyled,
+} from "./solid";
 
 export type IconName =
   | "plus"
@@ -61,6 +63,7 @@ export type IconName =
   | "trash";
 
 export type IconSize = "sm" | "md" | "lg";
+export type IconType = "outline" | "solid";
 
 export interface IconProps {
   /**
@@ -78,7 +81,7 @@ export interface IconProps {
   /**
    * type of icon
    */
-  type?: "outline" | "filled";
+  type?: IconType;
 
   /**
    * Icon color
@@ -96,7 +99,15 @@ export interface IconProps {
   style?: React.CSSProperties;
 }
 
+export interface IconStyleProps extends IconProps {
+  size: IconSize;
+  theme: ThemeType;
+}
+
 export const Icon = ({
+  /** for better documentation generated automatically with storybook,
+   * please dont't remove these default props
+   * */
   name,
   size = "md",
   type = "outline",
@@ -114,251 +125,81 @@ export const Icon = ({
     theme = defaultTheme;
   }
 
-  const getIconStyle = (
-    icColor: string,
-    icSize: IconSize,
-  ): React.CSSProperties => {
-    const iconSize: Record<IconSize, { height: string; width: string }> = {
-      sm: {
-        width: "12px",
-        height: "12px",
-      },
-      md: {
-        width: "18px",
-        height: "18px",
-      },
-      lg: {
-        width: "24px",
-        height: "24px",
-      },
-    };
+  const props = { theme, name, size, type, color, className, style };
 
-    return {
-      color: icColor,
-      ...iconSize[icSize],
-      ...style,
-    };
-  };
-
-  if (type === "filled") {
+  if (type === "solid") {
     switch (name) {
       case "plus":
-        return (
-          <PlusIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <PlusIconSolidStyled {...props} />;
       case "plus-circle":
-        return (
-          <PlusIconCirleSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <PlusCircleIconSolidStyled {...props} />;
       case "eye":
-        return (
-          <EyeIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <EyeIconSolidStyled {...props} />;
       case "eye-slash":
-        return (
-          <EyeSlashIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <EyeSlashIconSolidStyled {...props} />;
       case "building-library":
-        return (
-          <BuildingLibraryIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <BuildingLibraryIconSolidStyled {...props} />;
       case "user":
-        return (
-          <UserIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <UserIconSolidStyled {...props} />;
       case "lock-closed":
-        return (
-          <LockClosedIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <LockClosedIconSolidStyled {...props} />;
       case "bell-icon":
-        return (
-          <BellIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <BellIconSolidStyled {...props} />;
       case "chevron-down":
-        return (
-          <ChevronDownIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <ChevronDownIconSolidStyled {...props} />;
       case "chevron-up":
-        return (
-          <ChevronUpIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <ChevronUpIconSolidStyled {...props} />;
       case "home":
-        return (
-          <HomeIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <HomeIconSolidStyled {...props} />;
       case "bank-notes":
-        return (
-          <BankNotesIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <BankNotesIconSolidStyled {...props} />;
       case "clipboard-document":
-        return (
-          <ClipboardDocumentIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <ClipboardDocumentIconSolidStyled {...props} />;
       case "cog-6-tooth":
-        return (
-          <Cog6ToothIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <Cog6ToothIconSolidStyled {...props} />;
       case "document-duplicate":
-        return (
-          <DocumentDuplicateIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <DocumentDuplicateIconSolidStyled {...props} />;
       case "pencil":
-        return (
-          <PencilIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <PencilIconSolidStyled {...props} />;
       case "trash":
-        return (
-          <TrashIconSolid
-            className={className}
-            style={getIconStyle(color, size)}
-          />
-        );
+        return <TrashIconSolidStyled {...props} />;
     }
   }
 
   switch (name) {
     case "plus":
-      return (
-        <PlusIcon className={className} style={getIconStyle(color, size)} />
-      );
+      return <PlusIconStyled {...props} />;
     case "plus-circle":
-      return (
-        <PlusCircleIcon
-          className={className}
-          style={getIconStyle(color, size)}
-        />
-      );
+      return <PlusCircleIconStyled {...props} />;
     case "eye":
-      return (
-        <EyeIcon className={className} style={getIconStyle(color, size)} />
-      );
+      return <EyeIconStyled {...props} />;
     case "eye-slash":
-      return (
-        <EyeSlashIcon className={className} style={getIconStyle(color, size)} />
-      );
+      return <EyeSlashIconStyled {...props} />;
     case "building-library":
-      return (
-        <BuildingLibraryIcon
-          className={className}
-          style={getIconStyle(color, size)}
-        />
-      );
+      return <BuildingLibraryIconStyled {...props} />;
     case "user":
-      return (
-        <UserIcon className={className} style={getIconStyle(color, size)} />
-      );
+      return <UserIconStyled {...props} />;
     case "lock-closed":
-      return (
-        <LockClosedIcon
-          className={className}
-          style={getIconStyle(color, size)}
-        />
-      );
+      return <LockClosedIconStyled {...props} />;
     case "bell-icon":
-      return (
-        <BellIcon className={className} style={getIconStyle(color, size)} />
-      );
+      return <BellIconStyled {...props} />;
     case "chevron-down":
-      return (
-        <ChevronDownIcon
-          className={className}
-          style={getIconStyle(color, size)}
-        />
-      );
+      return <ChevronDownIconStyled {...props} />;
     case "chevron-up":
-      return (
-        <ChevronUpIcon
-          className={className}
-          style={getIconStyle(color, size)}
-        />
-      );
+      return <ChevronUpIconStyled {...props} />;
     case "home":
-      return (
-        <HomeIcon className={className} style={getIconStyle(color, size)} />
-      );
+      return <HomeIconStyled {...props} />;
     case "bank-notes":
-      return (
-        <BankNotesIcon
-          className={className}
-          style={getIconStyle(color, size)}
-        />
-      );
+      return <BankNotesIconStyled {...props} />;
     case "clipboard-document":
-      return (
-        <ClipboardDocumentIcon
-          className={className}
-          style={getIconStyle(color, size)}
-        />
-      );
+      return <ClipboardDocumentIconStyled {...props} />;
     case "cog-6-tooth":
-      return (
-        <Cog6ToothIcon
-          className={className}
-          style={getIconStyle(color, size)}
-        />
-      );
+      return <Cog6ToothIconStyled {...props} />;
     case "document-duplicate":
-      return (
-        <DocumentDuplicateIcon
-          className={className}
-          style={getIconStyle(color, size)}
-        />
-      );
+      return <DocumentDuplicateIconStyled {...props} />;
     case "pencil":
-      return (
-        <PencilIcon className={className} style={getIconStyle(color, size)} />
-      );
+      return <PencilIconStyled {...props} />;
     case "trash":
-      return (
-        <TrashIcon className={className} style={getIconStyle(color, size)} />
-      );
+      return <TrashIconStyled {...props} />;
   }
 };
