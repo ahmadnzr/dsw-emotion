@@ -65,43 +65,16 @@ export const ButtonStyled = styled.button(
       color: theme.colors.neutral[100],
       backgroundColor: theme.colors.primary[400],
       border: `1px solid ${theme.colors.primary[400]}`,
-
-      "&:hover": {
-        backgroundColor: theme.colors.primary[300],
-        border: `1px solid ${theme.colors.primary[300]}`,
-      },
-      "&:active": {
-        backgroundColor: theme.colors.primary[400],
-      },
     },
     "&.button-outlined": {
       color: theme.colors.primary[400],
       backgroundColor: theme.colors.neutral[100],
       border: `1px solid ${theme.colors.primary[400]}`,
-
-      "&:hover": {
-        backgroundColor: theme.colors.primary[100],
-      },
-      "&:active": {
-        backgroundColor: theme.colors.primary[200],
-      },
     },
     "&.button-text": {
       color: theme.colors.primary[500],
       backgroundColor: "transparent",
       border: "1px solid transparent",
-
-      "&:hover": {
-        backgroundColor: theme.colors.primary[100],
-      },
-      "&:active": {
-        backgroundColor: theme.colors.primary[200],
-      },
-      "&:disabled": {
-        cursor: "initial",
-        color: theme.colors.neutral[300],
-        backgroundColor: "transparent",
-      },
     },
     "&.button-link": {
       color: theme.colors.primary[500],
@@ -115,23 +88,6 @@ export const ButtonStyled = styled.button(
       "&:where(.button_sm, .button_md, .button_lg)": {
         padding: 0,
         borderRadius: 0,
-      },
-      "&:hover": {
-        color: theme.colors.primary[300],
-        ".button-link__icon": {
-          color: theme.colors.primary[300],
-        },
-      },
-      "&:active": {
-        color: theme.colors.primary[500],
-        ".button-link__icon": {
-          color: theme.colors.primary[500],
-        },
-      },
-      "&:disabled": {
-        cursor: "initial",
-        color: theme.colors.neutral[300],
-        backgroundColor: "transparent",
       },
     },
     "& .button-contained__icon": {
@@ -155,12 +111,66 @@ export const ButtonStyled = styled.button(
       height: "16px",
     },
 
+    "&:hover": {
+      "&.button-contained": {
+        backgroundColor: theme.colors.primary[300],
+        border: `1px solid ${theme.colors.primary[300]}`,
+      },
+      "&.button-outlined": {
+        backgroundColor: theme.colors.primary[100],
+      },
+      "&.button-text": {
+        backgroundColor: theme.colors.primary[100],
+      },
+      "&.button-link": {
+        color: theme.colors.primary[300],
+        ".button-link__icon": {
+          color: theme.colors.primary[300],
+        },
+      },
+    },
+
+    "&:active": {
+      "&.button-contained": {
+        backgroundColor: theme.colors.primary[400],
+      },
+      "&.button-outlined": {
+        backgroundColor: theme.colors.neutral[200],
+      },
+      "&.button-text": {
+        backgroundColor: theme.colors.primary[200],
+      },
+      "&.button-link": {
+        color: theme.colors.primary[500],
+        ".button-link__icon": {
+          color: theme.colors.primary[500],
+        },
+      },
+    },
+
     "&:disabled": {
+      cursor: "initial",
+
+      "& .button-contained__icon, .button-outlined__icon, .button-text__icon": {
+        color: theme.colors.neutral[300],
+      },
+
       "&.button-contained, &.button-outlined": {
-        cursor: "initial",
         backgroundColor: theme.colors.neutral[200],
         border: `1px solid ${theme.colors.neutral[200]}`,
         color: theme.colors.neutral[300],
+      },
+      "&.button-text, &.button-link": {
+        backgroundColor: "transparent",
+        color: theme.colors.neutral[300],
+      },
+      "&.button-link": {
+        "& .button-link__icon": {
+          color: theme.colors.neutral[300],
+        },
+      },
+      "& .button-icon > *": {
+        color: "red",
       },
     },
   }),
