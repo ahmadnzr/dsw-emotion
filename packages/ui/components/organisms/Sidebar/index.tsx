@@ -77,7 +77,7 @@ export const Sidebar = ({
               color={theme.colors.primary["400"]}
               name={item.icon}
               size="lg"
-              type="filled"
+              type="solid"
             />
             <Text className="title">{item.title}</Text>
             {item.childs.length ? (
